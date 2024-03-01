@@ -1,0 +1,26 @@
+*{
+  margin: 0px;
+  box-sizing: border-box;
+  padding: 0px;
+}
+
+body{
+  background-color: #C3FFED;
+}
+
+.logo{
+  height: 200px;
+}
+
+.navbar{
+  display: flex;
+  gap: 80px;
+  margin-left: 22%;
+  margin-top: -8%;
+}
+
+.caption{
+  height: 300px;
+  margin-left: 38%;
+  margin-top: -10%;
+}
