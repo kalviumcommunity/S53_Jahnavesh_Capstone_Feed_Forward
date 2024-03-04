@@ -12,10 +12,11 @@ const Schema1 = new mongoose.Schema({
     type : Number,
     require : true
   },
-  Food_Details:{
+  Food_details : {
     type : String,
-    require : true 
+    require : true
   }
+
 })
 
 const Schema2 = new mongoose.Schema({
@@ -28,6 +29,5 @@ const Schema2 = new mongoose.Schema({
 
 const receiveSchema = mongoose.model("receive",Schema2)
 const donateSchema = mongoose.model("donate",Schema1)
-
 
 module.exports = {donateSchema , receiveSchema}
