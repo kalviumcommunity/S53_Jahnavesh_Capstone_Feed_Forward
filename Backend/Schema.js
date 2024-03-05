@@ -11,11 +11,8 @@ const Schema1 = new mongoose.Schema({
   Contact : {
     type : Number,
     require : true
-  },
-  Food_Details:{
-    type : String,
-    require : true 
   }
+
 })
 
 const Schema2 = new mongoose.Schema({
