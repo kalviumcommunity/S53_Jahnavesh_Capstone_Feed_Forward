@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import LoginButton from './ComponentLogin/Login'
 import LogoutButton from './ComponentLogin/Logout'
 import Profile from './ComponentLogin/Profile'
 import Home from './Components/Home'
 import Navbar from './Components/Navbar'
+import AllRoutes from './AllRoutes/AllRoutes'
+// import FormsUse from './Components/Donateform' 
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +18,9 @@ function App() {
       <hr />
       <Profile /> */}
       <Navbar />
+      <AllRoutes />
+      {/* <FormsUse /> */}
+      {/* <Home /> */}
 
     </>
   )

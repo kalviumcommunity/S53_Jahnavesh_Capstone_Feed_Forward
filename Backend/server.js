@@ -2,6 +2,9 @@ const express = require("express")
 const app = express()
 const PORT = process.env.PORT || 3000;
 const connectDB = require("./db")
+const router = require("./routes")
+// const cors = require("cors")
+// app.use(cors)
 connectDB()
 
 app.listen(PORT,()=>{
