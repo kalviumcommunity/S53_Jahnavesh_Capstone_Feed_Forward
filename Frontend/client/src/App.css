@@ -32,3 +32,61 @@ body{
   margin-top: -4%;
   margin-left: 25%;
 }
+
+
+.form-container{
+  height: 650px;
+  width: 800px;
+  margin: auto;
+  border: 1px solid black;
+}
+
+label{
+  padding: 30px;
+  font-weight: 600;
+}
+
+p{
+  margin-left: 4%;
+  margin-top: 1%;
+  color: firebrick;
+}
+
+input{
+  width: 500px;
+  height: 30px;
+  padding: 5px;
+  margin-left: 4%;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+
+.submit{
+  cursor: pointer;
+  margin: auto;
+  margin-top: 5%;
+  width: 150px;
+  height: 40px;
+  font-size: 25px;
+}
+
+.submit:hover{
+  background-color: #888;
+  color: white;
+}
+
+.options button{
+  width: 350px;
+  height: 80px;
+  border-radius: 50px;
+  font-size: 50px;
+  padding: 10px;
+  margin-left: 15%;
+  margin-top: 4%;
+  background-color: #C3FFED;
+  cursor: pointer;
+  
+}

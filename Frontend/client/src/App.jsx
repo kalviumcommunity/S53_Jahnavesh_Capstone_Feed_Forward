@@ -6,7 +6,8 @@ import Profile from './ComponentLogin/Profile'
 import Home from './Components/Home'
 import Navbar from './Components/Navbar'
 import AllRoutes from './AllRoutes/AllRoutes'
-// import FormsUse from './Components/Donateform' 
+import DonateForm from './Components/DonateForm'
+import Selection from './Components/Selection'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,11 +20,11 @@ function App() {
       <Profile /> */}
       <Navbar />
       <AllRoutes />
-      {/* <FormsUse /> */}
-      {/* <Home /> */}
+      {/* <DonateForm /> */}
+      {/* <Selection /> */}
 
     </>
   )
 }
 
-export default App
+export default App 
