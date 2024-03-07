@@ -5,6 +5,7 @@ import LogoutButton from './ComponentLogin/Logout'
 import Profile from './ComponentLogin/Profile'
 import Home from './Components/Home'
 import Navbar from './Components/Navbar'
+import AllRoutes from './AllRoutes/AllRoutes'
 // import FormsUse from './Components/Donateform' 
 
 function App() {
@@ -17,7 +18,9 @@ function App() {
       <hr />
       <Profile /> */}
       <Navbar />
+      <AllRoutes />
       {/* <FormsUse /> */}
+      {/* <Home /> */}
 
     </>
   )
