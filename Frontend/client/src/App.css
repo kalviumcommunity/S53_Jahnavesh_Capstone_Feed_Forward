@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap');
+
 *{
   margin: 0px;
   box-sizing: border-box;
@@ -6,6 +8,7 @@
 
 body{
   background-color: #C3FFED;
+  font-family: "hepta slab";
 }
 
 .logo{
@@ -14,7 +17,7 @@ body{
 
 .navbar{
   display: flex;
-  gap: 80px;
+  gap: 60px;
   margin-left: 22%;
   margin-top: -8%;
 }
@@ -23,4 +26,9 @@ body{
   height: 300px;
   margin-left: 38%;
   margin-top: -10%;
+}
+
+.baglogo{
+  margin-top: -4%;
+  margin-left: 25%;
 }
