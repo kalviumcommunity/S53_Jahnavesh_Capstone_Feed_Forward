@@ -1,17 +1,20 @@
-const express = require("express")
-const app = express()
-const PORT = process.env.PORT || 3000;
-const connectDB = require("./db")
-const router = require("./routes")
-// const cors = require("cors")
-// app.use(cors)
-connectDB()
+const express = require("express");
+const cors = require("cors");
+const connectDB = require("./db");
+const router = require("./routes");
 
-app.listen(PORT,()=>{
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+app.use(cors());
+app.use("/", router);
+
+connectDB();
+
+app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
-})
+});
 
-
-app.get("/",(req,res)=>{
-  res.send("Welcome to my capstone project !!")
-})
+app.get("/", (req, res) => {
+  res.send("Welcome to my capstone project !!");
+});
