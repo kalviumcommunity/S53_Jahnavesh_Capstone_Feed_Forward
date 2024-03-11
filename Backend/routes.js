@@ -3,6 +3,17 @@ const router = express.Router();
 const { donateSchema } = require("./Schema");
 router.use(express.json());
 
+router.get("/receive", async (req, res) => {
+  try {
+    const food = await donateSchema.find(); 
+    console.log("Donations", food);
+    res.json(food);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.post("/donateForm", async (req, res) => {
   const data = req.body;
   const donate = new donateSchema(data);
