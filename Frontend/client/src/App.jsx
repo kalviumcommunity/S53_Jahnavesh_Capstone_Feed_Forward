@@ -20,7 +20,7 @@ function App() {
       <Profile /> */}
       <Navbar />
       <AllRoutes />
-      {/* <DonateForm /> */}
+      <DonateForm />
       {/* <Selection /> */}
 
     </>
