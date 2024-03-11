@@ -1,19 +1,19 @@
-const express = require("express")
-const app = express()
-const router = express.Router()
-const {donateSchema,receiveSchema} = require("./Schema")
-app.use("/",router)
+const express = require("express");
+const router = express.Router();
+const { donateSchema } = require("./Schema");
+router.use(express.json());
 
-router.post("/donateForm",async(req,res)=>{
-  const data = req.data;
-  const donate= new donateSchema(data)
-  await donate.save()
-  console.log(data);
+router.post("/donateForm", async (req, res) => {
+  const data = req.body;
+  const donate = new donateSchema(data);
   try {
-    res.send({message : true , donate:donate})
+    await donate.save();
+    console.log(data);
+    res.send({ message: true, donate: donate });
   } catch (error) {
     console.log(error);
-    res.status(500).json({error : error.message})
+    res.status(500).json({ error: error.message });
   }
 });
 
+module.exports = router;
