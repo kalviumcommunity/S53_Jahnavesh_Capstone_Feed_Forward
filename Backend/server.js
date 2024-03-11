@@ -3,8 +3,8 @@ const app = express()
 const PORT = process.env.PORT || 4000;
 const connectDB = require("./db")
 const router = require("./routes")
-// const cors = require("cors")
-// app.use(cors)
+const cors = require("cors")
+app.use(cors)
 connectDB()
 
 app.listen(PORT,()=>{
