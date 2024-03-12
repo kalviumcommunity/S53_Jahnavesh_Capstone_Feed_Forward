@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar'
 import AllRoutes from './AllRoutes/AllRoutes'
 import DonateForm from './Components/DonateForm'
 import Selection from './Components/Selection'
+import Receive from './Components/Receive'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,7 +21,8 @@ function App() {
       <Profile /> */}
       <Navbar />
       <AllRoutes />
-      <DonateForm />
+      {/* <Receive /> */}
+      {/* <DonateForm /> */}
       {/* <Selection /> */}
 
     </>
