@@ -9,6 +9,7 @@ import AllRoutes from './AllRoutes/AllRoutes'
 import DonateForm from './Components/DonateForm'
 import Selection from './Components/Selection'
 import Receive from './Components/Receive'
+import Footer from './Components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,8 +20,9 @@ function App() {
       <LogoutButton />
       <hr />
       <Profile /> */}
-      <Navbar />
+      {/* <Navbar /> */}
       <AllRoutes />
+      <Footer />
       {/* <Receive /> */}
       {/* <DonateForm /> */}
       {/* <Selection /> */}

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
   margin: 0px;
@@ -6,11 +8,11 @@
   padding: 0px;
 }
 
-body{
+/* body{
   background-image: url("https://i.imgur.com/CAaPWZi.png");
   background-size: cover;
 
-}
+} */
 
 .logo{
   height: 100px;
@@ -134,3 +136,27 @@ form{
   align-items: center;
 }
 
+.footer{
+  background-color: white;
+  font-family: "Fjalla One";
+}
+
+.footer h1{
+  margin-left: 45%;
+  margin-top: 7%;
+  font-size: 45px;
+}
+
+.footer-caption{
+  font-family: "Calibri";
+  margin-left: 38%;
+}
+
+.footer-right-image{
+  margin-left: 77%;
+  height: 400px;
+}
+
+.footer-left-image{
+  height: 400px;
+}
