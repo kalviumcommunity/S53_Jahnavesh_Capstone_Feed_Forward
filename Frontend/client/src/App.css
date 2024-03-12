@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hepta+Slab:wght@1..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
 
 *{
   margin: 0px;
@@ -7,12 +7,13 @@
 }
 
 body{
-  background-color: #C3FFED;
-  font-family: "hepta slab";
+  background-image: url("https://i.imgur.com/CAaPWZi.png");
+  background-size: cover;
+
 }
 
 .logo{
-  height: 200px;
+  height: 100px;
 }
 
 .navbar{
@@ -21,18 +22,6 @@ body{
   margin-left: 22%;
   margin-top: -8%;
 }
-
-.caption{
-  height: 300px;
-  margin-left: 38%;
-  margin-top: -10%;
-}
-
-.baglogo{
-  margin-top: -4%;
-  margin-left: 25%;
-}
-
 
 .form-container{
   height: 650px;
@@ -116,3 +105,32 @@ form{
   font-size: 20px;
   border-radius: 30px;
 }
+
+.title{
+  font-size: 35px;
+  font-family: "Grand Hotel";
+}
+
+.logo-title{
+  display: flex;
+  margin-left: 2%;
+  /* justify-content: space-between; */
+
+}
+
+.logo-title p{
+  margin-top: 1.75%;
+  margin-left: 1%;
+}
+
+.logo-title h3{
+  color: white;
+}
+.nav-options{
+  margin-left: 15%;
+  display: flex;
+  justify-content: space-around;
+  width: 40vw;
+  align-items: center;
+}
+
