@@ -80,30 +80,7 @@ form{
 }
 
 
-.footer{
-  background-color: white;
-  font-family: "Fjalla One";
-}
 
-.footer h1{
-  margin-left: 45%;
-  margin-top: 7%;
-  font-size: 45px;
-}
-
-.footer-caption{
-  font-family: "Calibri";
-  margin-left: 38%;
-}
-
-.footer-right-image{
-  margin-left: 77%;
-  height: 400px;
-}
-
-.footer-left-image{
-  height: 400px;
-}
 
 .home-captions{
   color: white;
