@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *{
   margin: 0px;
@@ -8,15 +9,6 @@
   padding: 0px;
 }
 
-/* body{
-  background-image: url("https://i.imgur.com/CAaPWZi.png");
-  background-size: cover;
-
-} */
-
-.logo{
-  height: 100px;
-}
 
 .navbar{
   display: flex;
@@ -69,33 +61,7 @@ form{
   color: white;
 }
 
-.options button{
-  width: 350px;
-  height: 80px;
-  border-radius: 50px;
-  font-size: 50px;
-  padding: 10px;
-  margin-left: 15%;
-  margin-top: 4%;
-  background-color: #C3FFED;
-  cursor: pointer;
-  
-}
 
-.each-card-components{
-  border: 1px solid black;
-  padding: 20px;
-  height: 350px;
-  width: 350px;
-}
-
-.all-components{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
-  margin-left: 5%;
-  margin-top: 5%;
-}
 
 .receive-btn {
   margin-top: 25%;
@@ -113,28 +79,6 @@ form{
   font-family: "Grand Hotel";
 }
 
-.logo-title{
-  display: flex;
-  margin-left: 2%;
-  /* justify-content: space-between; */
-
-}
-
-.logo-title p{
-  margin-top: 1.75%;
-  margin-left: 1%;
-}
-
-.logo-title h3{
-  color: white;
-}
-.nav-options{
-  margin-left: 15%;
-  display: flex;
-  justify-content: space-around;
-  width: 40vw;
-  align-items: center;
-}
 
 .footer{
   background-color: white;
@@ -159,4 +103,41 @@ form{
 
 .footer-left-image{
   height: 400px;
+}
+
+.home-captions{
+  color: white;
+  font-family: "Fjalla One";
+  font-size: 65px;
+  padding: 50px;
+  letter-spacing: 3;
+  margin-top: 4%;
+}
+
+.home-caption-2{
+  color: white;
+  font-size: 25px;
+  margin-left: 3%;
+  margin-top: -2%;
+}
+
+.donateBtn{
+  background: linear-gradient(#FE961D,#FF4D00);
+  height: 60px;
+  width: 200px;
+  border-radius: 25px;
+  color: white;
+  font-family: "Fira Sans Extra condensed";
+  font-size: 30px;
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+.receiveBtn{
+  height: 60px;
+  width: 200px;
+  border-radius: 25px;
+  font-size: 30px;
+  font-family: "Fira Sans Extra Condensed";
+  margin-left: 3%;
 }

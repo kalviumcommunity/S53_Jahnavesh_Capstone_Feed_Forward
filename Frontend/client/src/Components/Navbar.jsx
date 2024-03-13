@@ -3,6 +3,7 @@ import logo from "../images/logo main edited.png";
 import {Link} from "react-router-dom"
 import caption from "../images/Caption.png"
 import AllRoutes from "../AllRoutes/AllRoutes";
+import "./Navbar.css"
 
 function Navbar(){
   return(
