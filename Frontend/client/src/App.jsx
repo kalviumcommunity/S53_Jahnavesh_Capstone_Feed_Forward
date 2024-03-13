@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import './App.css'
+import "./Components/Navbar.css"
+import "./Components/Footer.css"
+import "./Components/About.css"
 import LoginButton from './ComponentLogin/Login'
 import LogoutButton from './ComponentLogin/Logout'
 import Profile from './ComponentLogin/Profile'
@@ -7,9 +10,9 @@ import Home from './Components/Home'
 import Navbar from './Components/Navbar'
 import AllRoutes from './AllRoutes/AllRoutes'
 import DonateForm from './Components/DonateForm'
-import Selection from './Components/Selection'
 import Receive from './Components/Receive'
 import Footer from './Components/Footer'
+import About from './Components/About'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,11 +24,12 @@ function App() {
       <hr />
       <Profile /> */}
       <Navbar />
-      <AllRoutes />
-      {/* <Footer /> */}
+      <Home/>
+      {/* <AllRoutes /> */}
+      <Footer />
+      <About />
       {/* <Receive /> */}
       {/* <DonateForm /> */}
-      {/* <Selection /> */}
 
     </>
   )
