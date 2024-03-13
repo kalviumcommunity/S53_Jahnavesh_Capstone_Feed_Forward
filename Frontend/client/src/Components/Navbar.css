@@ -1,0 +1,31 @@
+.logo-title p{
+  margin-top: 1.75%;
+  margin-left: 1%;
+}
+
+.logo-title h3{
+  color: white;
+}
+
+body{
+  background-image: url("https://i.imgur.com/CAaPWZi.png");
+  background-size: cover;
+}
+
+.logo{
+  height: 100px;
+}
+
+.logo-title{
+  display: flex;
+  margin-left: 2%;
+
+}
+
+.nav-options{
+  margin-left: 15%;
+  display: flex;
+  justify-content: space-around;
+  width: 40vw;
+  align-items: center;
+}

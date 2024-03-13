@@ -20,9 +20,9 @@ function App() {
       <LogoutButton />
       <hr />
       <Profile /> */}
-      {/* <Navbar /> */}
+      <Navbar />
       <AllRoutes />
-      <Footer />
+      {/* <Footer /> */}
       {/* <Receive /> */}
       {/* <DonateForm /> */}
       {/* <Selection /> */}
