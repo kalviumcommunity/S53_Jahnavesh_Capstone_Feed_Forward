@@ -9,7 +9,8 @@
 
 body{
   background-image: url("https://i.imgur.com/CAaPWZi.png");
-  background-size: cover;
+  /* background-size: cover; */
+  background-size: 100% 100vh;
 }
 
 .logo{
