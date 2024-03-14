@@ -38,7 +38,7 @@ label{
 .form-container p{
   margin-left: 4%;
   margin-top: 1%;
-  font-size: 35px;
+  font-size: 15px;
   color: orange;
 }
 
@@ -150,4 +150,9 @@ form{
 
 .logo_title{
   margin-left: 34%;
+}
+
+.gratitude-quote{
+  font-size: 35px;
+  color: #FE961D;
 }

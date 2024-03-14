@@ -34,7 +34,7 @@ export default function DonateForm() {
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           {isSubmitSuccessful && (
             <div className="success">
-              <p>Thank you for your donation .</p>
+              <h2 className="gratitude-quote">Thank you for your donation .</h2>
             </div>
           )}
 
