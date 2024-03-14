@@ -18,21 +18,28 @@
 }
 
 .form-container{
-  height: 650px;
+  height: 870px;
   width: 800px;
   margin: auto;
   border: 1px solid black;
+  background: white;
+  margin-top: 1%;
+  color: white;
+  border-radius: 40px;
 }
 
 label{
   padding: 30px;
   font-weight: 600;
+  color: black;
+  font-size: 30px;
 }
 
 .form-container p{
   margin-left: 4%;
   margin-top: 1%;
-  color: firebrick;
+  font-size: 35px;
+  color: orange;
 }
 
 input{
@@ -51,17 +58,14 @@ form{
   cursor: pointer;
   margin: auto;
   margin-top: 5%;
-  width: 150px;
-  height: 40px;
-  font-size: 25px;
-}
-
-.submit:hover{
-  background-color: #888;
+  width: 600px;
+  height: 50px;
   color: white;
+  border-radius: 15px;
+  font-size: 25px;
+  background: linear-gradient(#FE961D,#FF4D00);
+
 }
-
-
 
 .receive-btn {
   margin-top: 25%;
@@ -78,9 +82,6 @@ form{
   font-size: 35px;
   font-family: "Grand Hotel";
 }
-
-
-
 
 .home-captions{
   color: white;
@@ -117,4 +118,36 @@ form{
   font-size: 30px;
   font-family: "Fira Sans Extra Condensed";
   margin-left: 3%;
+}
+
+#home_bg{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#formBG{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 130vh;
+}
+
+.form_logo{
+  height: 100px;
+  margin-left: 11%;
+}
+
+.form-container h1{
+  font-family: "Grand Hotel";
+  font-size: 45px;
+}
+
+.logo_title{
+  margin-left: 34%;
 }

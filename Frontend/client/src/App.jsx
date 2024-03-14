@@ -23,11 +23,9 @@ function App() {
       <LogoutButton />
       <hr />
       <Profile /> */}
-      <Navbar />
-      <Home/>
-      {/* <AllRoutes /> */}
-      <Footer />
-      <About />
+      {/* <Navbar /> */}
+      {/* <Home/> */}
+      <AllRoutes />
       {/* <Receive /> */}
       {/* <DonateForm /> */}
 

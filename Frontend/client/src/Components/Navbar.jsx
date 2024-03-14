@@ -6,8 +6,7 @@ import "./Navbar.css"
 
 function Navbar(){
   return(
-    <div>
-
+    <div id="navbar">
       <div className="logo-title">
         <img src={logo} className="logo"/>
         <p className="title"><span style={{color : "orange"}}>Feed</span><span style={{color : "white"}}>Forward</span> </p>
