@@ -20,7 +20,7 @@ export default function Receive() {
 
   return (
     <div>
-      <h1>Receive</h1>
+      {/* <h1>Receive</h1>
       <div className="all-components">
         {data.map((e, index) => (
           <div key={index}  className="each-card-components">
@@ -30,7 +30,7 @@ export default function Receive() {
             <button className="receive-btn">RECEIVE</button>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

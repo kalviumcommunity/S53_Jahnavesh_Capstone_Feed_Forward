@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import formBG from "../images/df img.png";
+import logo from "../images/logo.png"
 
 export default function DonateForm() {
   const {
@@ -23,11 +25,16 @@ export default function DonateForm() {
 
   return (
     <div>
+      <img src={formBG} alt="" id="formBG" />
       <div className="form-container">
+        <div className="logo_title">
+            <img src={logo} alt="" className="form_logo"/>
+            <h1><span style={{color : "orange"}}>Feed</span> <span style={{color : "black"}}>Forward</span></h1>
+        </div>
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           {isSubmitSuccessful && (
             <div className="success">
-              <p>Donation Form filled Successful</p>
+              <p>Thank you for your donation .</p>
             </div>
           )}
 
