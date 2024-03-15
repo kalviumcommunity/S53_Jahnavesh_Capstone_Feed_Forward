@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXLg4AXYHk_DuoC4FPvX2SbsvrcJqmzXc",
-  authDomain: "capstone-project-9d919.firebaseapp.com",
-  projectId: "capstone-project-9d919",
-  storageBucket: "capstone-project-9d919.appspot.com",
-  messagingSenderId: "916105831222",
-  appId: "1:916105831222:web:40cefc5f4acd35cce7c997",
-  measurementId: "G-X0NFLJGWHB"
+  apiKey: import.meta.API_KEY_FB,
+  authDomain: import.meta.AUTH_DOMAIN_FB,
+  projectId: import.meta.PROJECT_ID_FB,
+  storageBucket: import.meta.STORAGE_BUCKET_FB,
+  messagingSenderId: import.meta.MESSAGING_SENDER_ID_FB,
+  appId: import.meta.APP_ID_FB,
+  measurementId: import.meta.MEASUREMENT_ID_FB
 };
 
 const app = initializeApp(firebaseConfig);
