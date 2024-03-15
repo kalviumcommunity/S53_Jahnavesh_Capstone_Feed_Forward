@@ -19,18 +19,18 @@ export default function Receive() {
   }, []);
 
   return (
-    <div>
-      {/* <h1>Receive</h1>
+    <div className="receive-page">
+      {/* <h1>Receive</h1> */}
       <div className="all-components">
         {data.map((e, index) => (
           <div key={index}  className="each-card-components">
             <p><span style={{fontSize:"25px"}}>Feedable People :</span><span style={{fontWeight : "700",fontSize : "20px"}}>{e.Feedable_people}</span></p>
-            <p style={{marginTop : "8%"}}><span style={{fontSize : "25px"}}>Location : </span><span style={{fontWeight : "700",fontSize : "20px"}}>{e.Location}</span></p>
-            <p style={{marginTop : "8%"}}><span style={{fontSize : "25px"}}>Food Details :</span><span style={{fontWeight : "700" , fontSize : "20px"}}>{e.Food_details}</span></p>
+            <p ><span style={{fontSize : "25px"}}>Location : </span><span style={{fontWeight : "700",fontSize : "20px"}}>{e.Location}</span></p>
+            <p><span style={{fontSize : "25px"}}>Food Details :</span><span style={{fontWeight : "700" ,color: "orange ", fontSize : "20px"}}>{e.Food_details}</span></p>
             <button className="receive-btn">RECEIVE</button>
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }
