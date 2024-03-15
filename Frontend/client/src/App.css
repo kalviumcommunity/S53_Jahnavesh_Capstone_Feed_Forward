@@ -67,16 +67,7 @@ form{
 
 }
 
-.receive-btn {
-  margin-top: 25%;
-  margin-left: 37%;
-  height: 50px;
-  width: 120px;
-  cursor: pointer;
-  background-color: #C3FFED;
-  font-size: 20px;
-  border-radius: 30px;
-}
+
 
 .title{
   font-size: 35px;
@@ -156,3 +147,43 @@ form{
   font-size: 35px;
   color: #FE961D;
 }
+
+.each-card-components{
+  border: 1px solid black;
+  width: 400px;
+  border-radius: 20px;
+  height: 250px;
+  background: url("https://i.imgur.com/wgZ7iyI.png");
+  background-position: 104% 98%;
+  background-size: 100px;
+  background-repeat: no-repeat;
+  
+}
+
+.each-card-components p{
+  padding: 10px;
+}
+
+.all-components{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-left: 5%;  
+  margin-top: 5%;
+}
+
+.receive-btn{
+  margin-left: 27%;
+  margin-top: 10%;
+  width: 200px;
+  height: 35px;
+  border-radius: 10px;
+  background: linear-gradient(#FE961D,#FF4D00);
+  color: white;
+  font-size: 25px;
+  font-family: "fjalla one";
+}
+
+/* .receive-page{
+  background-color: honeydew;
+} */
