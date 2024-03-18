@@ -187,3 +187,39 @@ form{
 /* .receive-page{
   background-color: honeydew;
 } */
+
+
+@media screen and (max-width:400px) {
+  #home_bg{
+    width: 160%;
+    height: 85%;
+  }
+
+  .home-captions{
+    font-size: 40px;
+  }
+
+  .home-caption-2{
+    font-size: 16px;
+    margin-left: 12%;
+    margin-top: -10%;
+  }
+
+  .donateBtn{
+    width: 100px;
+    font-size: 25px;
+    margin-left: 10%;
+    margin-top: 10%;
+    height: 33px;
+  }
+
+  .receiveBtn{
+    width: 100px;
+    font-size: 25px;
+    margin-left: 5%;
+    height: 33px;
+  }
+
+  
+
+}

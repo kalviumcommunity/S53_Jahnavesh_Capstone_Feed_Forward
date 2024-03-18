@@ -12,8 +12,8 @@ function Navbar(){
         <p className="title"><span style={{color : "orange"}}>Feed</span><span style={{color : "white"}}>Forward</span> </p>
         <div className="nav-options">
           <h3>HOME</h3>
-          <h3>SERVICES</h3>
-          <h3>ABOUT US</h3>
+          <h3 className="services_option">SERVICES</h3>
+          <h3 className="about_option">ABOUT</h3>
         </div>
       </div>
       
