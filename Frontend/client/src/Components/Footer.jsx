@@ -15,19 +15,17 @@ export default function Footer(){
         <img src={left_side_image} alt="left-image" className="footer-left-image" />
         <img src={right_side_image} alt="right-image" className="footer-right-image" />
         <div className="service-images">
-        <img src={call_img} alt="" />
-        <img src={share_logo} alt="" />
-        <img src={vehicle_logo} alt="" />
+        <img src={call_img} alt="" className="call_img" />
+        <img src={share_logo} alt=""  className="share_logo"/>
+        <img src={vehicle_logo} alt="" className="vehicle_logo"/>
       </div>
       </div>
       <div className="service-names">
-        <p>WE SHIP</p>
-        <p className="provide-food">PROVIDE FOOD </p>
         <p>CUSTOMER SERVICE</p>
+        <p className="provide-food">PROVIDE FOOD </p>
+        <p>WE SHIP</p>
       </div>
-      {/* <div>
-        <p>We provide transportation of food</p>
-      </div> */}
+      
       
     </div>
   )

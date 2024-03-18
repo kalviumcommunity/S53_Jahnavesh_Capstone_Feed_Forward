@@ -31,3 +31,22 @@ body{
   width: 40vw;
   align-items: center;
 }
+
+@media screen and (max-width:400px){
+  .logo{
+    height: 70px;
+  }
+
+  .title{
+    font-size: 35px;
+  }
+
+  .nav-options{
+    font-size: 12px;
+  }
+
+  .nav-options h3{
+    margin-left: 15%;
+  }
+
+}
