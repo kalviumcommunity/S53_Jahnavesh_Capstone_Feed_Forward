@@ -1,36 +1,31 @@
 import React from "react";
 import logo from "../images/logo main edited.png";
-import {Link} from "react-router-dom"
-import caption from "../images/Caption.png"
-import "./Navbar.css"
+import { Link } from "react-router-dom";
+import "./Navbar.css";
+import LoginButton from "../ComponentLogin/Login";
+import LogoutButton from "../ComponentLogin/Logout";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function Navbar(){
-  return(
+function Navbar() {
+  const { isAuthenticated } = useAuth0();
+
+  return (
     <div id="navbar">
       <div className="logo-title">
-        <img src={logo} className="logo"/>
-        <p className="title"><span style={{color : "orange"}}>Feed</span><span style={{color : "white"}}>Forward</span> </p>
+        <img src={logo} className="logo" alt="Logo" />
+        <p className="title">
+          <span style={{ color: "orange" }}>Feed</span>
+          <span style={{ color: "white" }}>Forward</span>{" "}
+        </p>
         <div className="nav-options">
           <h3>HOME</h3>
           <h3 className="services_option">SERVICES</h3>
           <h3 className="about_option">ABOUT</h3>
+          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
       </div>
-      
-      {/* <div className="navbar">
-        <Link to={"/"} style={{textDecoration : "none" , color : "white"}}>
-          HOME
-        </Link>
-        <Link to={"/contact"} style={{textDecoration : "none" , color : "white"}}>
-          CONTACT
-        </Link>
-        <Link to={"/about"} style={{textDecoration : "none" , color : "white"}}>
-          ABOUT
-        </Link>
-
-      </div>         */}
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
