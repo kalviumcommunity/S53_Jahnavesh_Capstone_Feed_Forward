@@ -28,9 +28,11 @@ body{
   margin-left: 15%;
   display: flex;
   justify-content: space-around;
-  width: 40vw;
+  width: 60vw;
   align-items: center;
+  cursor: pointer;
 }
+
 
 @media screen and (max-width:400px){
   .logo{
