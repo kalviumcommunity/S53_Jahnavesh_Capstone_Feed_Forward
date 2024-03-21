@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import formBG from "../images/df img.png";
-import logo from "../images/logo.png";
+import logo from "../images/logo.png"
 
 export default function DonateForm() {
   const {
@@ -11,32 +11,10 @@ export default function DonateForm() {
     reset,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
-
+  
   const formSubmitHandler = async (data) => {
     try {
-      const formData = new FormData(); // Create a FormData object
-
-      // Append form fields (excluding file)
-      Object.keys(data).forEach((key) => {
-        if (key !== "file") {
-          formData.append(key, data[key]);
-        }
-      });
-
-      // Append the selected file (if any)
-      if (file) {
-        formData.append("file", file);
-      }
-
-      const donationData = await axios.post(
-        "https://s53-jahnavesh-capstone-feed-forward.onrender.com/donateForm",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data", // Set content type for file upload
-          },
-        }
-      );
+      const donationData = await axios.post("https://s53-jahnavesh-capstone-feed-forward.onrender.com/donateForm", data);
       console.log(donationData);
       console.log(data);
       reset();
@@ -45,27 +23,25 @@ export default function DonateForm() {
     }
   };
 
-  const [file, setFile] = useState(null);
+  const [file,setFile] = useState()
 
-  const handleFile = (event) => {
-    setFile(event.target.files[0]); 
-  };
+  function handlefileEvent (event){
+    setFile(event.target.files[0])
+    console.log(file);
+  }
 
   return (
     <div>
       <img src={formBG} alt="" id="formBG" />
       <div className="form-container">
         <div className="logo_title">
-          <img src={logo} alt="" className="form_logo" />
-          <h1>
-            <span style={{ color: "orange" }}>Feed</span>
-            <span style={{ color: "black" }}>Forward</span>
-          </h1>
+            <img src={logo} alt="" className="form_logo"/>
+            <h1><span style={{color : "orange"}}>Feed</span> <span style={{color : "black"}}>Forward</span></h1>
         </div>
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           {isSubmitSuccessful && (
             <div className="success">
-              <h2 className="gratitude-quote">Thank you for your donation.</h2>
+              <h2 className="gratitude-quote">Thank you for your donation .</h2>
             </div>
           )}
 
@@ -116,11 +92,10 @@ export default function DonateForm() {
           {errors.Food_details && (
             <p className="err">{errors.Food_details.message}</p>
           )}
+          <input type="file" name="file" onChange={handlefileEvent}/>
+          <button>Upload</button>
 
-          <label>Upload Food Image (optional):</label>
-          <input type="file" name="file" onChange={handleFile} />
-
-          <input type="submit" className="submit" value="Donate" />
+          <input type="submit" className="submit" />
         </form>
       </div>
     </div>
