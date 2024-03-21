@@ -7,11 +7,12 @@ import AllRoutes from './AllRoutes/AllRoutes';
 
 const root = createRoot(document.getElementById('root'));
 
+
 root.render(
     <BrowserRouter>
       <Auth0Provider
-          domain="dev-ds0dprrrpymjwr4s.us.auth0.com"
-          clientId="YJ9GYNHldk2ocWdmPviD44gEUgTkpteH"
+          domain={import.meta.env.VITE_DOMAIN_AUTH0}
+          clientId={import.meta.env.VITE_CLIENT_ID_AUTH0}
           authorizationParams={{
             redirect_uri: window.location.origin
           }}

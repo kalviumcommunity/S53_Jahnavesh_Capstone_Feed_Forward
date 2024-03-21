@@ -23,7 +23,7 @@ function Navbar() {
           <h3 className="about_option">ABOUT</h3>
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
-      </div>
+      </div>  
     </div>
   );
 }

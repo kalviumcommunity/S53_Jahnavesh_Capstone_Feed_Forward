@@ -218,8 +218,23 @@ form{
 
 /* .receive-page{
   background-color: honeydew;
-} */
+} */  
 
+.form-container{
+  background-image: url("https://clipart-library.com/2023/grocery-food-cardboard-box-icon-isolated-white-vector-flat-illustration_623508-34.jpg");
+  background-repeat: no-repeat;
+  background-size: 350px;
+  background-position: 107% 50%;
+
+  
+
+}
+
+.fillables{
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 35px;
+}
 
 @media screen and (max-width:400px) {
   #home_bg{
