@@ -2,19 +2,23 @@ const mongoose = require("mongoose")
 const Schema1 = new mongoose.Schema({
   Feedable_people : {
     type : Number,
-    require : true
+    required : true
   } ,
   Location : {
     type : String,
-    require : true
+    required : true
   },
   Contact : {
     type : Number,
-    require : true
+    required : true
   },
   Food_details : {
     type : String,
-    require : true
+    required : true
+  },
+  myFile : {
+    type : String,
+    required : true 
   }
 
 })

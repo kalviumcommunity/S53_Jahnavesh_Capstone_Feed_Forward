@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import formBG from "../images/df img.png";
-import logo from "../images/logo.png"
+import logo from "../images/logo.png";
 
 export default function DonateForm() {
   const {
@@ -11,32 +11,54 @@ export default function DonateForm() {
     reset,
     formState: { errors, isSubmitSuccessful },
   } = useForm();
-  
+
+  const [imageBase64, setImageBase64] = useState("");
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImageBase64(base64);
+  };
+
   const formSubmitHandler = async (data) => {
     try {
-      const donationData = await axios.post("https://s53-jahnavesh-capstone-feed-forward.onrender.com/donateForm", data);
+      const formData = { ...data, myFile: imageBase64 };
+
+      console.log(formData);
+      const donationData = await axios.post(
+        "http://localhost:4000/donateForm",
+        formData
+      );
       console.log(donationData);
-      console.log(data);
       reset();
     } catch (err) {
       console.log(err, "error");
     }
   };
 
-  const [file,setFile] = useState()
-
-  function handlefileEvent (event){
-    setFile(event.target.files[0])
-    console.log(file);
-  }
-
   return (
     <div>
       <img src={formBG} alt="" id="formBG" />
       <div className="form-container">
         <div className="logo_title">
-            <img src={logo} alt="" className="form_logo"/>
-            <h1><span style={{color : "orange"}}>Feed</span> <span style={{color : "black"}}>Forward</span></h1>
+          <img src={logo} alt="" className="form_logo" />
+          <h1>
+            <span style={{ color: "orange" }}>Feed</span>{" "}
+            <span style={{ color: "black" }}>Forward</span>
+          </h1>
         </div>
         <form onSubmit={handleSubmit(formSubmitHandler)}>
           {isSubmitSuccessful && (
@@ -51,7 +73,8 @@ export default function DonateForm() {
             className="fillables"
             placeholder="Number of Feedable People"
             {...register("Feedable_people", {
-              required: "Please enter the approximate number of people that can be fed with your food",
+              required:
+                "Please enter the approximate number of people that can be fed with your food",
             })}
           />
           {errors.Feedable_people && (
@@ -64,7 +87,8 @@ export default function DonateForm() {
             className="fillables"
             placeholder="Location where the food is to be collected"
             {...register("Location", {
-              required: "Please enter the location where the food should be collected",
+              required:
+                "Please enter the location where the food should be collected",
             })}
           />
           {errors.Location && <p className="err">{errors.Location.message}</p>}
@@ -92,8 +116,14 @@ export default function DonateForm() {
           {errors.Food_details && (
             <p className="err">{errors.Food_details.message}</p>
           )}
-          <input type="file" name="file" onChange={handlefileEvent}/>
-          <button>Upload</button>
+          <input
+            type="file"
+            label="Image"
+            name="myFile"
+            id="file-upload"
+            accept=".jpeg , .png , .jpg"
+            onChange={(e) => handleFileUpload(e)}
+          />
 
           <input type="submit" className="submit" />
         </form>
