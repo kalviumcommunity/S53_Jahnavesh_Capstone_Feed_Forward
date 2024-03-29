@@ -13,7 +13,7 @@ export default function Postreceive(){
            <div className="logo_postreceive">
               <img src={logo} className="logo" alt="Logo" />
               <p className="title_postreceive">
-                <span style={{ color: "orange" }}>Feed</span>
+                <span style={{ color: "white" }}>Feed</span>
                 <span style={{ color: "white" }}>Forward</span>{" "}
               </p>
             </div>
