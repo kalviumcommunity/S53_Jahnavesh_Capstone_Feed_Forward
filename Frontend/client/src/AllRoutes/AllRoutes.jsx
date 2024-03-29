@@ -7,6 +7,7 @@ import Donate from "../Components/Donate";
 import Receive from "../Components/Receive";
 import Footer from "../Components/Footer";
 import DonateForm from "../Components/DonateForm";
+import Postreceive from "../Components/Postreceive";
 
 function AllRoutes(){
   return(
@@ -17,6 +18,7 @@ function AllRoutes(){
        <Route path="/donateForm" element= {<DonateForm/>}/>
        <Route path="/receive" element= {<Receive />} />
        <Route path="/services" element={<Footer />}/>
+       <Route path="/receiveDetails" element={<Postreceive/>}/>
     </Routes>
    )
 }
