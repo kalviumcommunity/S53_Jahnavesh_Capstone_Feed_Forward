@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Receive() {
   const [data, setData] = useState([]);
+
+  
 
   useEffect(() => {
     async function fetchData() {
@@ -27,7 +30,9 @@ export default function Receive() {
             <p><span style={{fontSize:"25px"}}>Feedable People :</span><span style={{fontWeight : "700",fontSize : "20px"}}>{e.Feedable_people}</span></p>
             <p ><span style={{fontSize : "25px"}}>Location : </span><span style={{fontWeight : "700",fontSize : "20px"}}>{e.Location}</span></p>
             <p><span style={{fontSize : "25px"}}>Food Details :</span><span style={{fontWeight : "700" ,color: "orange ", fontSize : "20px"}}>{e.Food_details}</span></p>
-            <button className="receive-btn">RECEIVE</button>
+            <Link to={"/receiveDetails"}>        
+               <button className="receive-btn">RECEIVE</button>
+            </Link>
           </div>
         ))}
       </div>

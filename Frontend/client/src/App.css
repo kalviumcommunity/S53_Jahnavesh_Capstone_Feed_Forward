@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Kaisei+Decol&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kaisei+Decol&display=swap');
+
 
 *{
   margin: 0px;
@@ -214,6 +218,7 @@ form{
   color: white;
   font-size: 25px;
   font-family: "fjalla one";
+  cursor: pointer;
 }
 
 
@@ -227,14 +232,62 @@ form{
   background-size: 350px;
   background-position: 107% 50%;
 
-  
 
+}
+
+.confirmation{
+  margin-top: 19.1%;
+}
+
+.confirm_btn{
+  margin-left: 30%;
+  margin-top: 3%;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: "Kaisei Decol";
+
+}
+
+.goback_btn{
+  margin-left: 18%;
+  margin-top: 3%;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: "Kaisei Decol";
+}
+
+.confirm_text{
+  font-family: "Josefin sans";
+  font-size: 50px;
+  color: #7162E9;
+  margin-left: 28.5%;
+}
+
+.confirm_bottom_page{
+  height: 51.2vh;
+  background-color: #7162E9;
 }
 
 .fillables{
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
   height: 35px;
+}
+
+.logo_postreceive{
+  display: flex;
+  margin-left: 80%;
+  margin-top: 11%;
+}
+
+.title_postreceive{
+  font-size: 35px;
+  font-family: "Grand Hotel";
+  margin-top: 8%;
 }
 
 @media screen and (max-width:400px) {
