@@ -247,6 +247,7 @@ form{
   border-radius: 10px;
   font-size: 25px;
   font-family: "Kaisei Decol";
+  cursor: pointer;
 
 }
 
@@ -258,18 +259,19 @@ form{
   border-radius: 10px;
   font-size: 25px;
   font-family: "Kaisei Decol";
+  cursor: pointer;
 }
 
 .confirm_text{
   font-family: "Josefin sans";
   font-size: 50px;
-  color: #7162E9;
+  color: #FE961D;
   margin-left: 28.5%;
 }
 
 .confirm_bottom_page{
   height: 51.2vh;
-  background-color: #7162E9;
+  background-color: #FE961D;
 }
 
 .fillables{
