@@ -247,6 +247,7 @@ form{
   border-radius: 10px;
   font-size: 25px;
   font-family: "Kaisei Decol";
+  cursor: pointer;
 
 }
 
@@ -258,6 +259,7 @@ form{
   border-radius: 10px;
   font-size: 25px;
   font-family: "Kaisei Decol";
+  cursor: pointer;
 }
 
 .confirm_text{
