@@ -22,8 +22,8 @@
 }
 
 .form-container{
-  height: 870px;
-  width: 800px;
+  height: 140vh;
+  width: 40vw;
   margin: auto;
   border: 1px solid black;
   background: white;
@@ -33,14 +33,15 @@
 }
 
 label{
-  padding: 30px;
+  padding: 20px;
+  margin-left: 2%;
   font-weight: 600;
   color: black;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .form-container p{
-  margin-left: 4%;
+  margin-left: 5%;
   margin-top: 1%;
   font-size: 15px;
   color: orange;
@@ -62,8 +63,8 @@ form{
   cursor: pointer;
   margin: auto;
   margin-top: 5%;
-  width: 600px;
-  height: 50px;
+  width: 500px;
+  height: 45px;
   color: white;
   border-radius: 15px;
   font-size: 25px;
@@ -168,7 +169,7 @@ form{
   top: 0;
   left: 0;
   width: 100vw;
-  height: 130vh;
+  height: 160vh;
 }
 
 .access{
@@ -180,13 +181,13 @@ form{
 }
 
 .form_logo{
-  height: 100px;
+  height: 80px;
   margin-left: 11%;
 }
 
 .form-container h1{
   font-family: "Grand Hotel";
-  font-size: 45px;
+  font-size: 35px;
 }
 
 .logo_title{
@@ -194,7 +195,9 @@ form{
 }
 
 .gratitude-quote{
-  font-size: 35px;
+  font-size: 30px;
+  margin-left: 5%;
+  margin-top: 3%;
   color: #FE961D;
 }
 
@@ -240,14 +243,14 @@ form{
   background-color: honeydew;
 } */  
 
-.form-container{
+/* .form-container{
   background-image: url("https://clipart-library.com/2023/grocery-food-cardboard-box-icon-isolated-white-vector-flat-illustration_623508-34.jpg");
   background-repeat: no-repeat;
   background-size: 350px;
   background-position: 107% 50%;
 
 
-}
+} */
 
 .confirmation{
   margin-top: 19.1%;
@@ -289,8 +292,10 @@ form{
 }
 
 .fillables{
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  /* border-top-left-radius: 10px; */
+  /* border-bottom-right-radius: 10px; */
+  border-radius: 30px;
+  padding-left: 15px;
   height: 35px;
 }
 

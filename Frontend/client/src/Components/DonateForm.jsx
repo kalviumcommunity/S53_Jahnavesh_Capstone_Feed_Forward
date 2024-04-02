@@ -67,6 +67,34 @@ export default function DonateForm() {
             </div>
           )}
 
+          <label>Your Name : </label>
+          <input
+            type="text"
+            className="fillables"
+            placeholder="Name of the Donor"
+            {...register("Donor_Name", {
+              required:
+                "Please enter the name of the donor",
+            })}
+          />
+          {errors.Donor_Name && (
+            <p className="err">{errors.Donor_Name.message}</p>
+          )}
+
+          <label>Your Email :</label>
+          <input
+            type="text"
+            className="fillables"
+            placeholder="Email of Donor"
+            {...register("Donor_Email", {
+              required:
+                "Please enter the Email of the donor",
+            })}
+          />
+          {errors.Donor_Email && (
+            <p className="err">{errors.Donor_Email.message}</p>
+          )}
+
           <label>Feedable People :</label>
           <input
             type="text"
