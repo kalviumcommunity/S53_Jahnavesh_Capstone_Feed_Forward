@@ -3,7 +3,6 @@ import {Routes , Route} from "react-router-dom"
 import Home from "../Components/Home";
 import Contact from "../Components/Contact";
 import About from "../Components/About";
-import Donate from "../Components/Donate";
 import Receive from "../Components/Receive";
 import Footer from "../Components/Footer";
 import DonateForm from "../Components/DonateForm";
