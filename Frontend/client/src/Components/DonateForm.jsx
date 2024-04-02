@@ -144,14 +144,14 @@ export default function DonateForm() {
           {errors.Food_details && (
             <p className="err">{errors.Food_details.message}</p>
           )}
-          <input
+          {/* <input
             type="file"
             label="Image"
             name="myFile"
             id="file-upload"
             accept=".jpeg , .png , .jpg"
             onChange={(e) => handleFileUpload(e)}
-          />
+          /> */}
 
           <input type="submit" className="submit" />
         </form>
