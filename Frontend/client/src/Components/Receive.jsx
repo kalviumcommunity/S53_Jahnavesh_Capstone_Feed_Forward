@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import formBG from "../images/df img.png";
+
 
 export default function Receive() {
   const [data, setData] = useState([]);
@@ -35,6 +37,7 @@ export default function Receive() {
 
   return (
     <div>
+      <img src={formBG} alt="" id="receivebg" />
       <input
         type="text"
         className="receive-filter"
@@ -44,31 +47,27 @@ export default function Receive() {
       />
       <div className="receive-page">
         <div className="all-components">
+
           {filteredData.map((e, index) => (
             <div key={index} className="each-card-components">
+
               <p>
-                <span style={{ fontSize: "25px" }}>Feedable People :</span>
-                <span style={{ fontWeight: "700", fontSize: "20px" }}>
-                  {e.Feedable_people}
-                </span>
+                {/* <span style={{ fontSize: "25px" }}>Feedable People :</span> */}
+                <h2 className="location">
+                  {e.Location.toUpperCase()}
+                </h2>
               </p>
               <p>
-                <span style={{ fontSize: "25px" }}>Location : </span>
-                <span style={{ fontWeight: "700", fontSize: "20px" }}>
-                  {e.Location}
-                </span>
-              </p>
+                {/* <span style={{ fontSize: "25px" }}>Food Details :</span> */}
+                <p className="food_details">
+                  {e.Food_details.toUpperCase()}
+                </p>
               <p>
-                <span style={{ fontSize: "25px" }}>Food Details :</span>
-                <span
-                  style={{
-                    fontWeight: "700",
-                    color: "orange",
-                    fontSize: "20px",
-                  }}
-                >
-                  {e.Food_details}
-                </span>
+                <p style={{ fontWeight: "700", fontSize: "20px" }} className="quantity">
+                  QUANTITY : <span style={{color : "#888"}}>{e.Feedable_people}</span>
+                </p>
+                {/* <span style={{ fontSize: "25px" }}>Location : </span> */}
+              </p>
               </p>
               <Link to={"/receiveDetails"}>
                 <button className="receive-btn">RECEIVE</button>

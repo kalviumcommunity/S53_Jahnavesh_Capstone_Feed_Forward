@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Kaisei+Decol&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kaisei+Decol&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 
 *{
@@ -163,13 +164,22 @@ form{
   height: 100vh;
 }
 
-#formBG{
+#form_bg{
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 160vh;
+  height: 100vh;
+}
+
+#receivebg{
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .access{
@@ -178,6 +188,12 @@ form{
   margin-top: 5%;
   margin-left: 3%;
 
+}
+
+.location{
+  font-family: "Open Sans";
+  margin-left: 10%;
+  margin-top: 10%;
 }
 
 .form_logo{
@@ -194,6 +210,11 @@ form{
   margin-left: 34%;
 }
 
+.food_details{
+  font-family: "Open Sans";
+  margin-left: 7.5%;
+}
+
 .gratitude-quote{
   font-size: 30px;
   margin-left: 5%;
@@ -203,14 +224,11 @@ form{
 
 .each-card-components{
   border: 1px solid black;
-  width: 400px;
+  width: 350px;
   border-radius: 20px;
-  height: 250px;
-  background: url("https://i.imgur.com/wgZ7iyI.png");
-  background-position: 104% 98%;
-  background-size: 100px;
-  background-repeat: no-repeat;
-  
+  height: 330px;
+  margin-left: 3%;
+  background: white;  
 }
 
 .each-card-components p{
@@ -226,10 +244,10 @@ form{
 }
 
 .receive-btn{
-  margin-left: 27%;
+  margin-left: 6%;
   margin-top: 10%;
-  width: 200px;
-  height: 35px;
+  width: 300px;
+  height: 40px;
   border-radius: 10px;
   background: linear-gradient(#FE961D,#FF4D00);
   color: white;
@@ -238,6 +256,11 @@ form{
   cursor: pointer;
 }
 
+.quantity{
+  font-family: "Open Sans";
+  margin-left: 5%;
+  font-weight: bolder;
+}
 
 /* .receive-page{
   background-color: honeydew;
