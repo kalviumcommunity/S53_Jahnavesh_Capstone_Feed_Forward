@@ -9,6 +9,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 function Navbar() {
   const { isAuthenticated } = useAuth0();
 
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById("services");
+    servicesSection.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById("about");
+    aboutSection.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div id="navbar">
       <div className="logo-title">
@@ -18,9 +28,9 @@ function Navbar() {
           <span style={{ color: "white" }}>Forward</span>{" "}
         </p>
         <div className="nav-options">
-          <h3>HOME</h3>
-          <h3 className="services_option">SERVICES</h3>
-          <h3 className="about_option">ABOUT</h3>
+          <h3><Link to="/" style={{textDecoration:"None",color:"white"}}>HOME</Link></h3>
+          <h3 className="services_option" onClick={scrollToServices}>SERVICES</h3>
+          <h3 className="about_option" onClick={scrollToAbout}>ABOUT</h3>
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
       </div>  
