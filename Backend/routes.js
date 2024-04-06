@@ -14,7 +14,7 @@ router.get("/receive", async (req, res) => {
   }
 });
 
-router.get("/sendemail",sendemail);
+// router.get("/sendemail",sendemail);
 
 router.post("/donateForm", async (req, res) => {
   const data = req.body;
