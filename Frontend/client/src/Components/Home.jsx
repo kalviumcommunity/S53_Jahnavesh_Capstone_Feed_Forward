@@ -35,8 +35,12 @@ function Home() {
           <p className="access"><span style={{color : "orange"}}>Please login or sign up to access</span>  donation and receive forms.</p>
         )}
       </div>
-      <Footer />
-      <About />
+      <div id="services">
+         <Footer />
+      </div>
+      <div id="about">
+        <About />
+      </div>
     </div>
   );
 }
