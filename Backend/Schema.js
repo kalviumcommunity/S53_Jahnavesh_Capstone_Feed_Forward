@@ -35,6 +35,10 @@ const Schema2 = new mongoose.Schema({
   Contact : {
     type : Number ,
     require : true
+  },
+  receiverPhoto : {
+    type : String ,
+    require : true
   }
 })
 
