@@ -175,6 +175,10 @@ form{
   height: 100vh;
 }
 
+.nav-options{
+  font-family: "Calibri";
+}
+
 .image_submission{
   width: 30vw;
   background: white;
