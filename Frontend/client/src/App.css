@@ -166,6 +166,49 @@ form{
   height: 100vh;
 }
 
+.success_bg{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.image_submission{
+  width: 30vw;
+  background: white;
+  height: 40vh;
+  margin: auto;
+  margin-top: 8%;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.pic_statement{
+  font-family: "Open Sans";
+  margin-left: 5%;
+}
+
+.image_submission input{
+  margin-top: 15%;
+  margin-left: 25%;
+}
+
+.image_submission button{
+  width: 350px;
+  cursor: pointer;
+  height: 35px;
+  margin-top: 20%;
+  margin-left: 6%;
+  font-size: 23px;
+  font-family: "Arial";
+  color: white;
+  background: linear-gradient(#FE961D,#FF4D00);
+  border: none;
+  border-radius: 7px;
+}
+
 #form_bg{
   position: absolute;
   z-index: -1;

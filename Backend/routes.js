@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { donateSchema } = require("./Schema");
+const { donateSchema, receiveSchema } = require("./Schema");
 router.use(express.json());
 
 router.get("/receive", async (req, res) => {
@@ -27,6 +27,21 @@ router.post("/donateForm", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
+  }
+});
+
+
+router.post("/receiverDetails",async (req,res)=>{
+  const data = req.body;
+  const receiver = new receiveSchema(data);
+  console.log(data);
+  try {
+    await receiver.save()
+    console.log(data);
+    res.send({message : true , receiver : receiver})
+  } catch(error){
+    console.log(error);
+    res.status(500).json({error : error.message});
   }
 });
 
