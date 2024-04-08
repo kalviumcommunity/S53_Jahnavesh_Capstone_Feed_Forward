@@ -5,7 +5,7 @@ const router = require("./routes");
 const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 4000;
-app.use(bodyParser.json({ limit: '50mb' }));
+app.use(express.json({ limit: '50mb' }));
 app.use(cors());
 app.use("/", router);
 
