@@ -227,6 +227,11 @@ form{
   height: 100vh;
 }
 
+.image_input{
+  margin-left: 10%;
+  margin-top: 1%;
+}
+
 #receivebg{
   position: fixed;
   z-index: -1;
