@@ -30,7 +30,9 @@ const Schema1 = new mongoose.Schema({
     required: true
   }
 }, {
-  timestamps: true
+  timestamps: {
+    createdAt : 'created_at'
+  }
 });
 
 const Schema2 = new mongoose.Schema({
