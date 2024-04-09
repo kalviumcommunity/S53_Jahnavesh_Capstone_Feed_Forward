@@ -4,7 +4,7 @@ const connectDB = require("./db");
 const router = require("./routes");
 const bodyParser = require("body-parser");
 const cron = require('node-cron');
-const Donations = require('./Schema/donateSchema');
+const donateSchema = require('./Schema');
 const { DateTime } = require("luxon");
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -20,7 +20,7 @@ cron.schedule('* * * * *', async () => {
   
   const expiryTime = now.minus({ hours: 3, minutes: 30 });
   
-  const expiredDonations = await Donations.find({ createdAt: { $lt: expiryTime } });
+  const expiredDonations = await donateSchema.find({ createdAt: { $lt: expiryTime } });
   
   try {
     for (const donation of expiredDonations) {
