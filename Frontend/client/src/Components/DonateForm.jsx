@@ -144,6 +144,8 @@ export default function DonateForm() {
           {errors.Food_details && (
             <p className="err">{errors.Food_details.message}</p>
           )}
+          {/* <label>Time the food will expire at:</label>
+          <input type="time" className="fillables" /> */}
           <label>Please upload the photo of the food:</label>
           <input
             type="file"
