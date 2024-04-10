@@ -401,36 +401,50 @@ form{
 
 @media screen and (max-width:400px) and (min-width:280px) {
   #home_bg{
-    width: 155vw;    
+    width: 100vw;  
+    height: 100vw;
   }
 
   .home-captions{
-    font-size: 40px;
+    font-size: 30px;
+    margin-left: -10%;
+    margin-top: 5%;
   }
 
   .home-caption-2{
-    font-size: 16px;
-    margin-left: 12%;
+    font-size: 14px;
+    /* margin-left: 8%; */
     margin-top: -10%;
   }
 
+  .access{
+    font-size: 15px;
+  }
+
   .donateBtn{
-    width: 100px;
-    font-size: 25px;
-    margin-left: 10%;
-    margin-top: 10%;
+    width: 80px;
+    font-size: 20px;
+    margin-left: 5%;
     height: 33px;
   }
 
   .receiveBtn{
-    width: 100px;
-    font-size: 25px;
+    width: 80px;
+    font-size: 20px;
     margin-left: 5%;
     height: 33px;
   }
 
   .login{
     font-size: 15px;
+    width: 300px;
+    height: 30px;
+    margin-left: 5%;
+    border-radius: 12px;
+  }
+
+  .logout{
+    font-size: 10px;
     width: 300px;
     height: 30px;
     margin-left: 5%;

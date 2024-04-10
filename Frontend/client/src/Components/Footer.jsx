@@ -11,7 +11,7 @@ export default function Footer(){
     <div className="footer">
       <h1>SERVICES</h1>
       <p className="footer-caption">The services that we cater to meet the needs of the needy</p>
-      <div>
+      <div className="images">
         <img src={left_side_image} alt="left-image" className="footer-left-image" />
         <img src={right_side_image} alt="right-image" className="footer-right-image" />
         <div className="service-images">
