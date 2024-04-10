@@ -399,10 +399,9 @@ form{
   margin-top: 8%;
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:400px) and (min-width:280px) {
   #home_bg{
-    width: 160%;
-    height: 85%;
+    width: 155vw;    
   }
 
   .home-captions{
@@ -428,6 +427,14 @@ form{
     font-size: 25px;
     margin-left: 5%;
     height: 33px;
+  }
+
+  .login{
+    font-size: 15px;
+    width: 300px;
+    height: 30px;
+    margin-left: 5%;
+    border-radius: 12px;
   }
 
   
