@@ -4,8 +4,10 @@ const connectDB = require("./db");
 const router = require("./routes");
 const bodyParser = require("body-parser");
 const cron = require('node-cron');
-const donateSchema = require('./Schema');
+const { donateSchema } = require('./Schema');
 const { DateTime } = require("luxon");
+const mongoose = require('mongoose');
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -15,14 +17,17 @@ app.use("/", router);
 
 connectDB();
 
+const Donate = mongoose.model("Donate", donateSchema);
+
+const TTL_SECONDS = 3.5 * 60 * 60;
+
+Donate.createIndex({ createdAt: 1 }, { expireAfterSeconds: TTL_SECONDS });
+
 cron.schedule('* * * * *', async () => {
-  const now = DateTime.now().toUTC();
-  
-  const expiryTime = now.minus({ hours: 3, minutes: 30 });
-  
-  const expiredDonations = await donateSchema.find({ createdAt: { $lt: expiryTime } });
-  
+  const expiryTime = DateTime.now().minus({ hours: 3, minutes: 30 });
+
   try {
+    const expiredDonations = await Donate.find({ createdAt: { $lt: expiryTime } });
     for (const donation of expiredDonations) {
       await donation.remove();
       console.log(`Expired donation removed: ${donation._id}`);
@@ -37,5 +42,5 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Welcome to my capstone project !!");
+  res.send("Welcome to my capstone project!!");
 });
