@@ -417,6 +417,32 @@ form{
     margin-top: -10%;
   }
 
+  .receive-filter{
+    width: 250px;
+    height: 30px;
+  }
+
+  .receive-filter::placeholder{
+    font-size: 20px;
+  }
+
+  #receivebg{
+    width: 100%;
+    height: 100%;
+  }
+
+  .each-card-components h2{
+    font-size: 20px;
+  }
+
+  .all-components{
+    margin-left: -1.6%;
+  }
+
+  .receive-btn{
+    width: 220px;
+  }
+
   .access{
     font-size: 15px;
   }
