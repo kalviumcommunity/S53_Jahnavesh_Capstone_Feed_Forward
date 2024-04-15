@@ -28,10 +28,11 @@ const Schema1 = new mongoose.Schema({
   Donor_Email: {
     type: String,
     required: true
-  }
-}, {
-  timestamps: {
-    createdAt : 'created_at'
+  },
+  created_at: {
+    type: Date,
+    expires: 10800,
+    default: Date.now
   }
 });
 
