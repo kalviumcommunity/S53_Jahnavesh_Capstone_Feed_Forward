@@ -31,7 +31,6 @@ const Schema1 = new mongoose.Schema({
   },
   created_at: {
     type: Date,
-    expires: 10800,
     default: Date.now
   }
 });
@@ -51,5 +50,14 @@ const Schema2 = new mongoose.Schema({
 
 const receiveSchema = mongoose.model("receive", Schema2);
 const donateSchema = mongoose.model("donate", Schema1);
+const HistoricalDonation = mongoose.model("historicalDonation", Schema1);
+
+setInterval(async () => {
+  const expiredDonations = await donateSchema.find({ created_at: { $lt: new Date(Date.now() - 10800 * 1000) } });
+  if (expiredDonations.length > 0) {
+    await HistoricalDonation.insertMany(expiredDonations);
+    await donateSchema.deleteMany({ _id: { $in: expiredDonations.map(d => d._id) } });
+  }
+}, 3600000);
 
 module.exports = { donateSchema, receiveSchema };
