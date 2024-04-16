@@ -17,7 +17,7 @@ app.use("/", router);
 
 connectDB();
 
-const donateCollection = mongoose.connection.collection('donate');
+const donateCollection = mongoose.connection.collection('donates');
 
 donateCollection.createIndex({ created_at: 1 }, { expireAfterSeconds: 10800 });
 
