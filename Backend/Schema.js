@@ -53,11 +53,23 @@ const donateSchema = mongoose.model("donate", Schema1);
 const HistoricalDonation = mongoose.model("historicalDonation", Schema1);
 
 setInterval(async () => {
-  const expiredDonations = await donateSchema.find({ created_at: { $lt: new Date(Date.now() - 10800 * 1000) } });
-  if (expiredDonations.length > 0) {
-    await HistoricalDonation.insertMany(expiredDonations);
-    await donateSchema.deleteMany({ _id: { $in: expiredDonations.map(d => d._id) } });
+  try {
+    const expirationThreshold = new Date(Date.now() - 3 * 60 * 60 * 1000);
+    const expiredDonations = await donateSchema.find({ created_at: { $lt: expirationThreshold } });
+
+    if (expiredDonations.length > 0) {
+      console.log(`Moving ${expiredDonations.length} expired donations to HistoricalDonation...`);
+      await HistoricalDonation.insertMany(expiredDonations);
+      console.log(`Deleting ${expiredDonations.length} expired donations from donateSchema...`);
+      await donateSchema.deleteMany({ _id: { $in: expiredDonations.map(d => d._id) } });
+      console.log("Expired donations moved and deleted successfully.");
+    } else {
+      console.log("No expired donations found.");
+    }
+  } catch (error) {
+    console.error("Error occurred while processing expired donations:", error);
   }
 }, 3600000);
+
 
 module.exports = { donateSchema, receiveSchema };
