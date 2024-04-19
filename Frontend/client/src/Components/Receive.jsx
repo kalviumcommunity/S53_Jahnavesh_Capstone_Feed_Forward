@@ -66,7 +66,7 @@ export default function Receive() {
                 <h2 className="location">{e.Location.toUpperCase()}</h2>
               </p>
               <p className="food_details">{e.Food_details.toUpperCase()}</p>
-              <p style={{ fontWeight: "700", fontSize: "20px" }} className="quantity">
+              <p className="quantity">
                 QUANTITY : <span style={{color : "#888"}}>{e.Feedable_people}</span>
               </p>
               <button className="receive-btn" onClick={() => handleReceiveClick(e._id, e.Donor_Email, e.Donor_Name)}>RECEIVE</button>

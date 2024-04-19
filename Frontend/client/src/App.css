@@ -275,7 +275,7 @@ form{
 
 .food_details{
   font-family: "Open Sans";
-  margin-left: 7.5%;
+  margin-left: 9.5%;
 }
 
 .gratitude-quote{
@@ -321,8 +321,13 @@ form{
 
 .quantity{
   font-family: "Open Sans";
-  margin-left: 5%;
+  margin-left: 9%;
   font-weight: bolder;
+  font-size: 20px;
+}
+
+.each-card-components p{
+  margin-top: 2.5%;
 }
 
 /* .receive-page{
