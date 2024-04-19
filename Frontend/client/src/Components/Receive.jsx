@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import formBG from "../images/df img.png";
 
-
 export default function Receive() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -35,6 +34,20 @@ export default function Receive() {
     setFilter(e.target.value);
   };
 
+  const handleReceiveClick = async (_id, Donor_Email, Donor_Name) => {
+    if (window.confirm("Someone wants to receive this food. Are you sure you want to accept it?")) {
+      try {
+        const donation = filteredData.find(item => item._id === _id);
+        await sendMail(Donor_Email, Donor_Name, donation); 
+        console.log("Email sent to donor successfully");
+      } catch (error) {
+        console.error("Error receiving donation:", error);
+      }
+    } else {
+      console.log("Donation not accepted");
+    }
+  }; 
+
   return (
     <div>
       <img src={formBG} alt="" id="receivebg" />
@@ -47,31 +60,16 @@ export default function Receive() {
       />
       <div className="receive-page">
         <div className="all-components">
-
           {filteredData.map((e, index) => (
             <div key={index} className="each-card-components">
-
               <p>
-                {/* <span style={{ fontSize: "25px" }}>Feedable People :</span> */}
-                <h2 className="location">
-                  {e.Location.toUpperCase()}
-                </h2>
+                <h2 className="location">{e.Location.toUpperCase()}</h2>
               </p>
-              <p>
-                {/* <span style={{ fontSize: "25px" }}>Food Details :</span> */}
-                <p className="food_details">
-                  {e.Food_details.toUpperCase()}
-                </p>
-              <p>
-                <p style={{ fontWeight: "700", fontSize: "20px" }} className="quantity">
-                  QUANTITY : <span style={{color : "#888"}}>{e.Feedable_people}</span>
-                </p>
-                {/* <span style={{ fontSize: "25px" }}>Location : </span> */}
+              <p className="food_details">{e.Food_details.toUpperCase()}</p>
+              <p style={{ fontWeight: "700", fontSize: "20px" }} className="quantity">
+                QUANTITY : <span style={{color : "#888"}}>{e.Feedable_people}</span>
               </p>
-              </p>
-              <Link to={"/receiveDetails"}>
-                <button className="receive-btn">RECEIVE</button>
-              </Link>
+              <button className="receive-btn" onClick={() => handleReceiveClick(e._id, e.Donor_Email, e.Donor_Name)}>RECEIVE</button>
             </div>
           ))}
         </div>
