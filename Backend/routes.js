@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { donateSchema, receiveSchema } = require("./Schema");
+const sendMail = require("./sendMail")
 router.use(express.json());
 
 router.get("/receive", async (req, res) => {
@@ -14,7 +15,6 @@ router.get("/receive", async (req, res) => {
   }
 });
 
-// router.get("/sendemail",sendemail);
 
 router.post("/donateForm", async (req, res) => {
   const data = req.body;
@@ -44,5 +44,23 @@ router.post("/receiverDetails",async (req,res)=>{
     res.status(500).json({error : error.message});
   }
 });
+
+router.post("/receiveDonation/:donationId", async (req, res) => {
+  const { donationId } = req.params;
+  const { userEmail, userName } = req.body;
+
+  try {
+    const donation = await donateSchema.findById(donationId);
+    if (!donation) {
+      return res.status(404).json({ error: "Donation not found" });
+    }
+    await sendMail(donation.Donor_Email, userName);
+    return res.status(200).json({ message: "Email sent to donor successfully" });
+  } catch (error) {
+    console.error("Error receiving donation:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 
 module.exports = router;
