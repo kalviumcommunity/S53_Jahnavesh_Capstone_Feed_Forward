@@ -45,6 +45,18 @@ router.post("/receiverDetails",async (req,res)=>{
   }
 });
 
+router.get("/receiver",async(req,res)=>{
+  try {
+    const receiverDet = await receiveSchema.find();
+    console.log(receiverDet);
+    res.json(receiverDet)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+ 
+})
+
 router.post("/receiveDonation/:donationId", async (req, res) => {
   const { donationId } = req.params;
   const { userEmail, userName } = req.body;
