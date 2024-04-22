@@ -55,7 +55,9 @@ export default function Receive() {
               <p className="quantity">
                 QUANTITY : <span style={{color : "#888"}}>{e.Feedable_people}</span>
               </p>
-              <button className="receive-btn">RECEIVE</button>
+              <Link to={"/receiveDetails"}>
+                <button className="receive-btn">RECEIVE</button>
+              </Link>
             </div>
           ))}
         </div>
