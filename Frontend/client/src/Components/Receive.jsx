@@ -34,20 +34,6 @@ export default function Receive() {
     setFilter(e.target.value);
   };
 
-  const handleReceiveClick = async (_id, Donor_Email, Donor_Name) => {
-    if (window.confirm("Someone wants to receive this food. Are you sure you want to accept it?")) {
-      try {
-        const donation = filteredData.find(item => item._id === _id);
-        await sendMail(Donor_Email, Donor_Name, donation); 
-        console.log("Email sent to donor successfully");
-      } catch (error) {
-        console.error("Error receiving donation:", error);
-      }
-    } else {
-      console.log("Donation not accepted");
-    }
-  }; 
-
   return (
     <div>
       <img src={formBG} alt="" id="receivebg" />
@@ -69,7 +55,7 @@ export default function Receive() {
               <p className="quantity">
                 QUANTITY : <span style={{color : "#888"}}>{e.Feedable_people}</span>
               </p>
-              <button className="receive-btn" onClick={() => handleReceiveClick(e._id, e.Donor_Email, e.Donor_Name)}>RECEIVE</button>
+              <button className="receive-btn">RECEIVE</button>
             </div>
           ))}
         </div>
