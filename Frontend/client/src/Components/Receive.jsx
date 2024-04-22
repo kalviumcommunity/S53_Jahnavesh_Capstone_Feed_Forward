@@ -7,6 +7,7 @@ export default function Receive() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,6 +18,8 @@ export default function Receive() {
         setFilteredData(res.data);
       } catch (error) {
         console.error("Error fetching Donations:", error);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -45,22 +48,26 @@ export default function Receive() {
         onChange={handleFilterChange}
       />
       <div className="receive-page">
-        <div className="all-components">
-          {filteredData.map((e, index) => (
-            <div key={index} className="each-card-components">
-              <p>
-                <h2 className="location">{e.Location.toUpperCase()}</h2>
-              </p>
-              <p className="food_details">{e.Food_details.toUpperCase()}</p>
-              <p className="quantity">
-                QUANTITY : <span style={{color : "#888"}}>{e.Feedable_people}</span>
-              </p>
-              <Link to={"/receiveDetails"}>
-                <button className="receive-btn">RECEIVE</button>
-              </Link>
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <span className="loading loading-spinner loading-lg"></span>
+        ) : (
+          <div className="all-components">
+            {filteredData.map((e, index) => (
+              <div key={index} className="each-card-components">
+                <p>
+                  <h2 className="location">{e.Location.toUpperCase()}</h2>
+                </p>
+                <p className="food_details">{e.Food_details.toUpperCase()}</p>
+                <p className="quantity">
+                  QUANTITY : <span style={{ color: "#888" }}>{e.Feedable_people}</span>
+                </p>
+                <Link to={"/receiveDetails"}>
+                  <button className="receive-btn">RECEIVE</button>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
