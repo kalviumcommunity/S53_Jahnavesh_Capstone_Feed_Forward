@@ -1,15 +1,14 @@
 import React from "react";
-import "./About.css";
 import about_final from "../images/final about image.png";
 
 function About() {
   return (
-    <div className="about">
+    <div>
       <div>
-        <h1 className="about-title">ABOUT US</h1>
-        <img src={about_final} alt="" className="about_final_img" />
+        {/* <h1 className="about-title">ABOUT US</h1> */}
+        <img src={about_final} alt="" style={{width:"100vw"}} />
         <div>
-          <p className="aboutIdea">
+          {/* <p className="aboutIdea">
             The central focus of this capstone project is to aid those in need ,
             particularly by addressing the issue of the leftover food . Imagine
             you’ve hosted an event and find yourself with excess food that you’d
@@ -22,7 +21,7 @@ function About() {
             aims to minimise food wastage but also facilitates various forms of
             food donation , ensuring that assistance reaches those who require
             it the most .
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

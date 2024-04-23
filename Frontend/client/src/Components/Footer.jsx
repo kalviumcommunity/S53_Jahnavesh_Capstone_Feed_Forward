@@ -1,15 +1,16 @@
 import React from "react";
 import "./Footer.css";
-import left_side_image from "../images/side design left.png" ;
-import right_side_image from "../images/side design right.png" ;
-import call_img from "../images/call symbol.png";
-import share_logo from "../images/share logo.png";
-import vehicle_logo from "../images/vehicle logo.png";
+// import left_side_image from "../images/side design left.png" ;
+// import right_side_image from "../images/side design right.png" ;
+// import call_img from "../images/call symbol.png";
+// import share_logo from "../images/share logo.png";
+// import vehicle_logo from "../images/vehicle logo.png";
+import service_img from "../images/services.png"
 
 export default function Footer(){
   return(
-    <div className="footer">
-      <h1>SERVICES</h1>
+    <div className="footer" style={{width:"100vw",marginTop:"10%"}}>
+      {/* <h1>SERVICES</h1>
       <p className="footer-caption">The services that we cater to meet the needs of the needy</p>
       <div className="images">
         <img src={left_side_image} alt="left-image" className="footer-left-image" />
@@ -24,7 +25,9 @@ export default function Footer(){
         <p>CUSTOMER SERVICE</p>
         <p className="provide-food">PROVIDE FOOD </p>
         <p>WE SHIP</p>
-      </div>
+      </div> */}
+
+      <img src={service_img} alt="" style={{objectFit:"contain",width:"100vw"}}/>
       
       
     </div>
