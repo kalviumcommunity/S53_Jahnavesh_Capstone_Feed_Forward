@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import "./Components/Navbar.css"
 import "./Components/Footer.css"
-import "./Components/About.css"
 import LoginButton from './ComponentLogin/Login'
 import LogoutButton from './ComponentLogin/Logout'
 import Profile from './ComponentLogin/Profile'
