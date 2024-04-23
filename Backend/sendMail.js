@@ -1,37 +1,56 @@
-const nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 
-async function sendMail(userEmail, name, donationDetails) {
-    const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.GMAIL,
-      pass: process.env.GMAIL_PASS
-    }
-  });
-
-  const htmlBody = `
-    <h2>Donation Received!</h2>
-    <p>Dear ${name},</p>
-    <p>We are writing to confirm that we have received your donation of ${donationDetails.Food_details.toUpperCase()} for ${donationDetails.Feedable_people} people in ${donationDetails.Location.toUpperCase()}. 
-      Thank you for your generosity! Your contribution will help us feed those in need.</p>
-    <p>Sincerely,</p>
-    <p>The Feed Forward Team</p>
-  `;
-
-  const mailOptions = {
-    from: '"Feed Forward" <process.env.USER>',
-    to: userEmail,
-    subject: `Feed Forward Donation Confirmation for ${name}`,
-    text: `Donation Received! Your donation of ${donationDetails.Food_details.toUpperCase()} for ${donationDetails.Feedable_people} people in ${donationDetails.Location.toUpperCase()} has been received. Thank you!`,
-    html: htmlBody
-  };
-
-  try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Message sent: %s", info.messageId);
-  } catch (error) {
-    console.error("Error sending email:", error);
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'jahnavreddy12@gmail.com',
+    pass: 'qevl rujy xjel mbgs'
   }
-}
+});
 
-module.exports = sendMail;
+var mailOptions = {
+  from: 'jahnavreddy1@gmail.com',
+  to: 'jahnavesh.reddy@kalvium.community',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+
+
+// const nodemailer = require("nodemailer")
+
+// const html = `
+//   <h1>Hello World</h1>
+//   <p>Nodemailer is useful</p>
+// `;
+
+// async function main(){
+//   const transporter = nodemailer.createTransport({
+//     host: 'mail.gmail.com',
+//     port : 465,
+//     secure : true,
+//     auth: {
+//       user: 'jahnavreddy1@gmail.com',
+//       pass : 'jahnavreddy12@!'
+//     }
+//   })
+
+//   const info = await transporter.sendMail({
+//     from : 'Jahnavesh <jahnavreddy1@gmail.com>',
+//     to :'jahnavesh.reddy@kalvium.community',
+//     'subject' : 'Hello',
+//     html:html
+
+//   })
+//   console.log("Message sent: "+info.messageId);
+// }
+
+// main()
+// .catch(e=>console.log(e))
