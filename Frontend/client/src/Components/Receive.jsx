@@ -37,6 +37,18 @@ export default function Receive() {
     setFilter(e.target.value);
   };
 
+  const handleReceiveClick = async (donationId, donorEmail, donorName) => {
+    try {
+      await axios.post(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiveDonation/${donationId}`, { 
+        userEmail: donorEmail, 
+        userName: donorName
+      });
+    } catch (error) {
+      console.error("Error sending email to donor:", error);
+    }
+  };
+  
+
   return (
     <div>
       <img src={formBG} alt="" id="receivebg" />
@@ -61,9 +73,7 @@ export default function Receive() {
                 <p className="quantity">
                   QUANTITY : <span style={{ color: "#888" }}>{e.Feedable_people}</span>
                 </p>
-                <Link to={"/receiveDetails"}>
-                  <button className="receive-btn">RECEIVE</button>
-                </Link>
+                <button className="receive-btn" onClick={() => handleReceiveClick(e._id, e.Donor_Email, e.Donor_Name)}>RECEIVE</button>
               </div>
             ))}
           </div>
