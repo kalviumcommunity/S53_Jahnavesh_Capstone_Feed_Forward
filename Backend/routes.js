@@ -66,10 +66,19 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
     if (!donation) {
       return res.status(404).json({ error: "Donation not found" });
     }
-    await sendMail(donation.Donor_Email, userName);
+
+    const mailOptions = {
+      from: 'jahnavreddy12@gmail.com', 
+      to: donation.Donor_Email,
+      subject: 'Your Donation Has Been Received',
+      text: `Dear ${donation.Donor_Name},\n\nThank you for your donation. It has been received and accepted by ${userName}.\n\nSincerely,\nThe Donation Team`
+    };
+
+    await sendMail(mailOptions);
+
     return res.status(200).json({ message: "Email sent to donor successfully" });
   } catch (error) {
-    console.error("Error receiving donation:", error);
+    console.error("Error sending email to donor:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
