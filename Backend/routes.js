@@ -68,10 +68,19 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
     }
 
     const mailOptions = {
-      from: 'jahnavreddy12@gmail.com', 
+      from: 'your@email.com',
       to: donation.Donor_Email,
-      subject: 'Your Donation Has Been Received',
-      text: `Dear ${donation.Donor_Name},\n\nThank you for your donation. It has been received and accepted by ${userName}.\n\nSincerely,\nThe Donation Team`
+      subject: 'Your Donation Needs Confirmation',
+      html: `
+        <p>Dear ${donation.Donor_Name},</p>
+        <p>Your donation has been received and is pending confirmation by ${userName}.</p>
+        <p>Please confirm your donation:</p>
+        <p>
+          <a href="http://yourapp.com/accept/${donationId}" style="margin-right: 10px;">Accept</a>
+          <a href="http://yourapp.com/deny/${donationId}">Deny</a>
+        </p>
+        <p>Sincerely,<br/>The Donation Team</p>
+      `
     };
 
     await sendMail(mailOptions);
@@ -82,6 +91,7 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 router.post("/accept/:donationId", async (req, res) => {
   const { donationId } = req.params;
