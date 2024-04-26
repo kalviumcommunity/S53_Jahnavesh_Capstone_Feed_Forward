@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { donateSchema, receiveSchema } = require("./Schema");
-const sendMail = require("./sendMail")
+const sendMail = require("./sendMail");
 router.use(express.json());
 
 router.get("/receive", async (req, res) => {
   try {
-    const food = await donateSchema.find(); 
+    const food = await donateSchema.find();
     console.log("Donations", food);
     res.json(food);
   } catch (error) {
@@ -15,11 +15,10 @@ router.get("/receive", async (req, res) => {
   }
 });
 
-
 router.post("/donateForm", async (req, res) => {
   const data = req.body;
   const donate = new donateSchema(data);
-  console.log(data)
+  console.log(data);
   try {
     await donate.save();
     console.log(data);
@@ -30,22 +29,21 @@ router.post("/donateForm", async (req, res) => {
   }
 });
 
-
-router.post("/receiverDetails",async (req,res)=>{
+router.post("/receiverDetails", async (req, res) => {
   const data = req.body;
   const receiver = new receiveSchema(data);
   console.log(data);
   try {
     await receiver.save()
     console.log(data);
-    res.send({message : true , receiver : receiver})
-  } catch(error){
+    res.send({ message: true, receiver: receiver })
+  } catch (error) {
     console.log(error);
-    res.status(500).json({error : error.message});
+    res.status(500).json({ error: error.message });
   }
 });
 
-router.get("/receiver",async(req,res)=>{
+router.get("/receiver", async (req, res) => {
   try {
     const receiverDet = await receiveSchema.find();
     console.log(receiverDet);
@@ -54,7 +52,7 @@ router.get("/receiver",async(req,res)=>{
     console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
- 
+
 })
 
 router.post("/receiveDonation/:donationId", async (req, res) => {
@@ -68,16 +66,16 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
     }
 
     const mailOptions = {
-      from: 'your@email.com',
+      from: 'jahnavreddy12@gmail.com',
       to: donation.Donor_Email,
-      subject: 'Your Donation Needs Confirmation',
+      subject: 'Donation Request',
       html: `
         <p>Dear ${donation.Donor_Name},</p>
-        <p>Your donation has been received and is pending confirmation by ${userName}.</p>
-        <p>Please confirm your donation:</p>
+        <p>${userName} has requested to receive your donation.</p>
+        <p>Please respond:</p>
         <p>
-          <a href="http://yourapp.com/accept/${donationId}" style="margin-right: 10px;">Accept</a>
-          <a href="http://yourapp.com/deny/${donationId}">Deny</a>
+          <a href="http://yourapp.com/processDonationRequest/${donationId}/accept" style="margin-right: 10px;">Accept</a>
+          <a href="http://yourapp.com/processDonationRequest/${donationId}/deny">Deny</a>
         </p>
         <p>Sincerely,<br/>The Donation Team</p>
       `
@@ -85,76 +83,59 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
 
     await sendMail(mailOptions);
 
-    return res.status(200).json({ message: "Email sent to donor successfully" });
+    return res.status(200).json({ message: "Request sent to donor successfully" });
   } catch (error) {
-    console.error("Error sending email to donor:", error);
+    console.error("Error sending request to donor:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-
-router.post("/accept/:donationId", async (req, res) => {
+router.post("/processDonationRequest/:donationId/accept", async (req, res) => {
   const { donationId } = req.params;
 
   try {
-    await donateSchema.findByIdAndUpdate(donationId, { status: "Accepted" });
-    
-    const donation = await donateSchema.findById(donationId);
-    const donorEmail = donation.Donor_Email;
-    const donorName = donation.Donor_Name;
+    const donationRequest = await receiveSchema.findById(donationId);
+    if (!donationRequest) {
+      return res.status(404).json({ error: "Donation request not found" });
+    }
 
-    const mailOptions = {
-      from: 'your@email.com',
-      to: donorEmail,
-      subject: 'Your Donation Has Been Accepted',
-      html: `
-        <p>Dear ${donorName},</p>
-        <p>We are pleased to inform you that your donation has been accepted.</p>
-        <p>Thank you for your generosity!</p>
-        <p>Sincerely,<br/>The Donation Team</p>
-      `
-    };
+    await receiveSchema.findByIdAndUpdate(donationId, { status: "Accepted" });
 
-    await sendMail(mailOptions);
 
-    res.status(200).json({ message: "Donation accepted successfully" });
+    return res.status(200).json({ message: "Donation request accepted successfully" });
   } catch (error) {
-    console.error("Error accepting donation:", error);
+    console.error("Error accepting donation request:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-router.post("/deny/:donationId", async (req, res) => {
+router.post("/processDonationRequest/:donationId/deny", async (req, res) => {
   const { donationId } = req.params;
 
   try {
-    await donateSchema.findByIdAndUpdate(donationId, { status: "Denied" });
-    
-    const donation = await donateSchema.findById(donationId);
-    const donorEmail = donation.Donor_Email;
-    const donorName = donation.Donor_Name;
+    const donationRequest = await receiveSchema.findById(donationId);
+    if (!donationRequest) {
+      return res.status(404).json({ error: "Donation request not found" });
+    }
 
-    const mailOptions = {
-      from: 'your@email.com',
-      to: donorEmail,
-      subject: 'Your Donation Has Been Rejected',
-      html: `
-        <p>Dear ${donorName},</p>
-        <p>We regret to inform you that your donation has been rejected.</p>
-        <p>We appreciate your willingness to contribute.</p>
-        <p>Sincerely,<br/>The Donation Team</p>
-      `
-    };
+    await receiveSchema.findByIdAndUpdate(donationId, { status: "Denied" });
 
-    await sendMail(mailOptions);
 
-    res.status(200).json({ message: "Donation denied successfully" });
+    return res.status(200).json({ message: "Donation request denied successfully" });
   } catch (error) {
-    console.error("Error denying donation:", error);
+    console.error("Error denying donation request:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-
+router.get("/receivedDonations", async (req, res) => {
+  try {
+    const receivedDonations = await receiveSchema.find({ status: "Pending" });
+    res.json(receivedDonations);
+  } catch (error) {
+    console.error("Error fetching received donations:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 module.exports = router;
