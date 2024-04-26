@@ -83,5 +83,68 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
   }
 });
 
+router.post("/accept/:donationId", async (req, res) => {
+  const { donationId } = req.params;
+
+  try {
+    await donateSchema.findByIdAndUpdate(donationId, { status: "Accepted" });
+    
+    const donation = await donateSchema.findById(donationId);
+    const donorEmail = donation.Donor_Email;
+    const donorName = donation.Donor_Name;
+
+    const mailOptions = {
+      from: 'your@email.com',
+      to: donorEmail,
+      subject: 'Your Donation Has Been Accepted',
+      html: `
+        <p>Dear ${donorName},</p>
+        <p>We are pleased to inform you that your donation has been accepted.</p>
+        <p>Thank you for your generosity!</p>
+        <p>Sincerely,<br/>The Donation Team</p>
+      `
+    };
+
+    await sendMail(mailOptions);
+
+    res.status(200).json({ message: "Donation accepted successfully" });
+  } catch (error) {
+    console.error("Error accepting donation:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.post("/deny/:donationId", async (req, res) => {
+  const { donationId } = req.params;
+
+  try {
+    await donateSchema.findByIdAndUpdate(donationId, { status: "Denied" });
+    
+    const donation = await donateSchema.findById(donationId);
+    const donorEmail = donation.Donor_Email;
+    const donorName = donation.Donor_Name;
+
+    const mailOptions = {
+      from: 'your@email.com',
+      to: donorEmail,
+      subject: 'Your Donation Has Been Rejected',
+      html: `
+        <p>Dear ${donorName},</p>
+        <p>We regret to inform you that your donation has been rejected.</p>
+        <p>We appreciate your willingness to contribute.</p>
+        <p>Sincerely,<br/>The Donation Team</p>
+      `
+    };
+
+    await sendMail(mailOptions);
+
+    res.status(200).json({ message: "Donation denied successfully" });
+  } catch (error) {
+    console.error("Error denying donation:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
 
 module.exports = router;
