@@ -31,6 +31,7 @@ router.post("/donateForm", async (req, res) => {
 
 router.post("/receiveDetails", async (req, res) => {
   const data = req.body;
+  console.log(data);
   const receiver = new receiveSchema(data);
   console.log(data);
   try {

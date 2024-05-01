@@ -189,21 +189,32 @@ form{
   padding: 20px;
 }
 
-.pic_statement{
+/* .pic_statement{
   font-family: "Open Sans";
   margin-left: 5%;
+} */
+
+.image_upload_success{
+  margin-top: 5%;
+  margin-left: 15%;
 }
 
-.image_submission input{
-  margin-top: 15%;
-  margin-left: 25%;
+.image_submission h3{
+  font-family: "Open Sans";
+  margin-left: 5%; 
+}
+
+.contact_info{
+  border-radius: 8px;
+  width: 400px;
+  margin-top: 5%;
 }
 
 .image_submission button{
   width: 350px;
   cursor: pointer;
   height: 35px;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-left: 6%;
   font-size: 23px;
   font-family: "Arial";
