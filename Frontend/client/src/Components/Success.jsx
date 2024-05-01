@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import donationBG from '../images/Dona_img.png'; 
-import logo from '../images/logo_main_edited.png'; 
+import donationBG from '../images/Dona img.png'; 
+import logo from '../images/logo main edited.png'; 
 
 export default function Success() {
   const [imageBase64, setImageBase64] = useState('');
