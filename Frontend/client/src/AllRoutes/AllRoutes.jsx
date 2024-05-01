@@ -19,7 +19,7 @@ function AllRoutes(){
        <Route path="/receive" element= {<Receive />} />
        <Route path="/services" element={<Footer />}/>
        <Route path="/receiveDetails" element={<Success/>}/>
-       <Route path="/confirmation" element={<Success />}/>
+       {/* <Route path="/confirmation" element={<Success />}/> */}
     </Routes>
    )
 }

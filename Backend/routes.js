@@ -29,7 +29,7 @@ router.post("/donateForm", async (req, res) => {
   }
 });
 
-router.post("/receiverDetails", async (req, res) => {
+router.post("/receiveDetails", async (req, res) => {
   const data = req.body;
   const receiver = new receiveSchema(data);
   console.log(data);
@@ -68,15 +68,10 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
     const mailOptions = {
       from: 'jahnavreddy12@gmail.com',
       to: donation.Donor_Email,
-      subject: 'Donation Request',
+      subject: 'Donation Accepted',
       html: `
         <p>Dear ${donation.Donor_Name},</p>
-        <p>${userName} has requested to receive your donation.</p>
-        <p>Please respond:</p>
-        <p>
-          <a href="http://yourapp.com/processDonationRequest/${donationId}/accept" style="margin-right: 10px;">Accept</a>
-          <a href="http://yourapp.com/processDonationRequest/${donationId}/deny">Deny</a>
-        </p>
+        <p>A person is trying to receive your donation.</p>
         <p>Sincerely,<br/>The Donation Team</p>
       `
     };
@@ -109,24 +104,6 @@ router.post("/processDonationRequest/:donationId/accept", async (req, res) => {
   }
 });
 
-router.post("/processDonationRequest/:donationId/deny", async (req, res) => {
-  const { donationId } = req.params;
-
-  try {
-    const donationRequest = await receiveSchema.findById(donationId);
-    if (!donationRequest) {
-      return res.status(404).json({ error: "Donation request not found" });
-    }
-
-    await receiveSchema.findByIdAndUpdate(donationId, { status: "Denied" });
-
-
-    return res.status(200).json({ message: "Donation request denied successfully" });
-  } catch (error) {
-    console.error("Error denying donation request:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
 
 router.get("/receivedDonations", async (req, res) => {
   try {

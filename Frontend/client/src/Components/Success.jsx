@@ -36,7 +36,7 @@ export default function Success() {
 
     try {
       const response = await axios.post(
-        'https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiverDetails',
+        'https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiveDetails',
         formData
       );
       console.log(response.data);
