@@ -3,10 +3,12 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import donationBG from '../images/Dona img.png'; 
 import logo from '../images/logo main edited.png'; 
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Success() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const navigate=useNavigate()
   const onSubmit = async (formData) => {
     try {
       console.log("formData: ", formData);
@@ -16,6 +18,7 @@ export default function Success() {
         Data
       );
       console.log('Success:', response.data);
+      navigate("/receive")
     } catch (error) {
       console.error('Error submitting form:', error);
     }
@@ -70,7 +73,7 @@ export default function Success() {
             className="contact_info"
             placeholder="PLEASE FILL THE CONTACT NUMBER OF RECEIVER"
           />
-          {errors.Contact && <p>{errors.Contact.message}</p>}
+          {/* {errors.Contact && <p>{errors.Contact.message}</p>} */}
           <button type="submit">SUBMIT</button>
         </form>
       </div>
