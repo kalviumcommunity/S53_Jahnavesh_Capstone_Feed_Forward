@@ -27,7 +27,7 @@ function Home() {
             <Link to={"/donateForm"}>
               <button className="donateBtn">DONATE</button>
             </Link>
-            <Link to={"/receive"}>
+            <Link to={"/receiveDetails"}>
               <button className="receiveBtn">RECEIVE</button>
             </Link>
           </>

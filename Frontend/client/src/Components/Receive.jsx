@@ -7,19 +7,19 @@ export default function Receive() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true)
       const url = "https://s53-jahnavesh-capstone-feed-forward.onrender.com/receive";
       try {
         const res = await axios.get(url);
         setData(res.data);
         setFilteredData(res.data);
+        setLoading(false)
       } catch (error) {
         console.error("Error fetching Donations:", error);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -61,7 +61,7 @@ export default function Receive() {
       />
       <div className="receive-page">
         {loading ? (
-          <span className="loading loading-spinner loading-lg"></span>
+          <span className="loading loading-bars loading-lg"></span>
         ) : (
           <div className="all-components">
             {filteredData.map((e, index) => (
