@@ -88,7 +88,7 @@
 // }
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import donationBG from '../images/Dona img.png'; 
@@ -99,9 +99,11 @@ export default function Success() {
 
   const onSubmit = async (formData) => {
     try {
+      console.log("formData: ", formData);
+      const Data = { ...formData, receiverPhoto: imageBase64 };
       const response = await axios.post(
         'https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiveDetails',
-        formData
+        Data
       );
       console.log('Success:', response.data);
     } catch (error) {
@@ -109,21 +111,25 @@ export default function Success() {
     }
   };
 
-  const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    
-    const base64Image = await convertToBase64(file);
-    e.target.dataset.base64 = base64Image;
-  };
+  const [imageBase64, setImageBase64] = useState("");
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
     });
+  };
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setImageBase64(base64);
   };
 
   return (
@@ -145,7 +151,7 @@ export default function Success() {
             type="file"
             {...register('receiverPhoto')}
             className="image_upload_success"
-            onChange={handleFileChange}
+            onChange={handleFileUpload}
           />
           <h3 style={{ marginTop: '5%' }}>CONTACT:</h3>
           <input
@@ -154,7 +160,7 @@ export default function Success() {
             className="contact_info"
             placeholder="PLEASE FILL THE CONTACT NUMBER OF RECEIVER"
           />
-          {errors.contactNumber && <p>{errors.Contact.message}</p>}
+          {errors.Contact && <p>{errors.Contact.message}</p>}
           <button type="submit">SUBMIT</button>
         </form>
       </div>
