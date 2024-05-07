@@ -4,6 +4,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import AllRoutes from './AllRoutes/AllRoutes';
+import ParentContext from './Components/ParentContext';
 
 const root = createRoot(document.getElementById('root'));
 
@@ -17,7 +18,9 @@ root.render(
             redirect_uri: window.location.origin
           }}
         >
-          <App />
+          <ParentContext>
+            <App />
+          </ParentContext>
         </Auth0Provider>,
     </BrowserRouter>
 );
