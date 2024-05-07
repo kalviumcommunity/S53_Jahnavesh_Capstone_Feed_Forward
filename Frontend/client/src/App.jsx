@@ -2,13 +2,16 @@ import './App.css'
 import "./Components/Navbar.css"
 import "./Components/Footer.css"
 import AllRoutes from './AllRoutes/AllRoutes'
-import Dashboard from './Components/PreviousDonations'
+import Signup from './Components/SignupForm'
+import Signin from './Components/SigninForm'
 
 function App() {
 
   return (
     <>
       <AllRoutes />
+      {/* <Signup /> */}
+      {/* <Signin /> */}
     </>
   )
 }

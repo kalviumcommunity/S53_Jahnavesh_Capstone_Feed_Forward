@@ -13,7 +13,7 @@
     "@auth0/auth0-react": "^2.2.4",
     "autoprefixer": "^10.4.19",
     "axios": "^1.6.7",
-    "firebase": "^10.9.0",
+    "firebase": "^10.11.1",
     "otp-input-react": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

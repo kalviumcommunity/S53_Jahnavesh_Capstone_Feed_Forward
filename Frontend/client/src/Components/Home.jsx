@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import About from "./About";
 import bg_img from "../images/BG-1.png";
 import { useAuth0 } from "@auth0/auth0-react";
+import { AppContext } from "./ParentContext";
 
 function Home() {
-  const { isAuthenticated } = useAuth0();
+  // const { isAuthenticated } = useAuth0(); 
+  const {signin} = useContext(AppContext);
 
   return (
     <div>
@@ -22,7 +24,7 @@ function Home() {
         <p>Together, we can fight hunger. Donate food today!</p>
       </div>
       <div>
-        {isAuthenticated ? (
+        {signin ? (
           <>
             <Link to={"/donateForm"}>
               <button className="donateBtn">DONATE</button>

@@ -8,6 +8,9 @@ import Footer from "../Components/Footer";
 import DonateForm from "../Components/DonateForm";
 import Postreceive from "../Components/Postreceive";
 import Success from "../Components/Success";
+import { SignInMethod } from "firebase/auth";
+import Signup from "../Components/SignupForm";
+import Signin from "../Components/SigninForm";
 
 function AllRoutes(){
   return(
@@ -19,6 +22,8 @@ function AllRoutes(){
        <Route path="/receive" element= {<Receive />} />
        <Route path="/services" element={<Footer />}/>
        <Route path="/receiveDetails" element={<Success/>}/>
+       <Route path="/signin" element={<Signin />}/>
+       <Route path="/signup" element={<Signup />}/>
        {/* <Route path="/confirmation" element={<Success />}/> */}
     </Routes>
    )
