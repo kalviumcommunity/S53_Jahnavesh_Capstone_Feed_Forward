@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import formBG from "../images/df img.png";
 import logo from "../images/logo.png";
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
+import { AppContext } from "./ParentContext";
 
 export default function DonateForm() {
   const {
@@ -13,6 +16,7 @@ export default function DonateForm() {
   } = useForm();
 
   const [imageBase64, setImageBase64] = useState("");
+  const {user} = useContext(AppContext)
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -42,6 +46,12 @@ export default function DonateForm() {
         "https://s53-jahnavesh-capstone-feed-forward.onrender.com/donateForm",
         formData
       );
+
+      await setDoc(doc(db, "donates", user.uid), {
+        uid: user.uid,
+        formData
+      });
+
       console.log(donationData);
       reset();
     } catch (err) {

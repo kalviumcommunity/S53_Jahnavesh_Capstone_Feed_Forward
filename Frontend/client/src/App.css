@@ -224,6 +224,45 @@ form{
   border-radius: 7px;
 }
 
+.signin_bgimg{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-container-signin{
+  width: 450px;
+  height: 450px;
+  border-radius: 12px;
+  background-color: white;
+  margin-left: 37%;
+  margin-top: 9%
+}
+
+.signin_logo{
+  height: 100px;
+  margin-left: 35%;
+
+}
+
+.form-container-signin input{
+  width: 400px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  /* background : white;  */
+  height: 35px;
+  margin-left: 6%;
+  margin-top: 1%;
+}
+
+
+.title_signin{
+  margin-left: 30%;
+}
+
 #form_bg{
   position: absolute;
   z-index: -1;
@@ -240,6 +279,98 @@ form{
   left: 0;
   width: 100vw;
   height: 100vh;
+}
+
+.submit-button-signin{
+  width: 400px;
+  height: 35px;
+  background : linear-gradient(#FE961D,#FF4D00);
+  border: none;
+  margin-left: 6%;
+  color: white;
+  font-size: 20px;
+  font-family: "Arial";
+  margin-top: 8%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.signup_bg{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+}
+
+.form-container-signup{
+  width: 450px;
+  height: 450px;
+  border-radius: 12px;
+  background-color: white;
+  margin-left: 37%;
+  margin-top: 9%  
+}
+
+.form-container-signup input{
+  width: 400px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  /* background : white;  */
+  height: 35px;
+  margin-left: 6%;
+  margin-top: 1%;
+}
+
+.submit-button-signup{
+  width: 400px;
+  height: 35px;
+  background : linear-gradient(#FE961D,#FF4D00);
+  border: none;
+  margin-left: 6%;
+  color: white;
+  font-size: 20px;
+  font-family: "Arial";
+  margin-top: 8%;
+  border-radius: 5px;
+  cursor: pointer;  
+}
+
+.userexists_signup{
+  margin-top: 2%;
+  margin-left: 6%;
+  color: black;
+  text-decoration-line: none;
+}
+
+.login_button_nav{
+  width: 150px;
+  background: linear-gradient(#FE961D,#FF4D00);
+  border: none;
+  color: white;
+  font-size: 20px;
+  height: 30px;
+  font-family: "calibri";
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.logout_button_nav{
+  width: 150px;
+  background: linear-gradient(#FE961D,#FF4D00);
+  border: none;
+  color: white;
+  font-size: 20px;
+  height: 30px;
+  font-family: "calibri";
+  border-radius: 10px;
+  cursor: pointer;  
+}
+
+.signup_logo{
+  height: 100px;
+  margin-left: 35%; 
 }
 
 .image_input{
