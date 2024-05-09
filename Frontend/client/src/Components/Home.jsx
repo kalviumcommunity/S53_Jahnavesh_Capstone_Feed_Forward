@@ -4,12 +4,10 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import About from "./About";
 import bg_img from "../images/BG-1.png";
-import { useAuth0 } from "@auth0/auth0-react";
 import { AppContext } from "./ParentContext";
 
 function Home() {
-  // const { isAuthenticated } = useAuth0(); 
-  const {signin} = useContext(AppContext);
+  const { signin } = useContext(AppContext);
 
   return (
     <div>
@@ -34,11 +32,16 @@ function Home() {
             </Link>
           </>
         ) : (
-          <p className="access"><span style={{color : "orange"}}>Please login or sign up to access</span>  donation and receive forms.</p>
+          <p className="access">
+            <span style={{ color: "orange" }}>
+              Please login or sign up to access
+            </span>{" "}
+            donation and receive forms.
+          </p>
         )}
       </div>
       <div id="services">
-         <Footer />
+        <Footer />
       </div>
       <div id="about">
         <About />
