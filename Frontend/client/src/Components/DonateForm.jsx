@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import formBG from "../images/df img.png";
 import logo from "../images/logo.png";
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import { AppContext } from "./ParentContext";
 
@@ -40,24 +40,25 @@ export default function DonateForm() {
   const formSubmitHandler = async (data) => {
     try {
       const formData = { ...data, myFile: imageBase64 };
-
-      console.log(formData);
-      const donationData = await axios.post(
-        "https://s53-jahnavesh-capstone-feed-forward.onrender.com/donateForm",
-        formData
-      );
-
-      await setDoc(doc(db, "donates", user.uid), {
-        uid: user.uid,
-        formData
-      });
-
-      console.log(donationData);
+  
+      const docRef = doc(db, "donates", user.uid);
+      const docSnapshot = await getDoc(docRef);
+      let existingData = [];
+      if (docSnapshot.exists()) {
+        existingData = docSnapshot.data().donations || [];
+      }
+  
+      const updatedData = [...existingData, formData];
+  
+      await setDoc(docRef, { donations: updatedData });
+  
+      console.log("Data successfully added to Firestore:", updatedData);
       reset();
     } catch (err) {
-      console.log(err, "error");
+      console.log("Error submitting form:", err);
     }
   };
+  
 
   return (
     <div>
