@@ -11,6 +11,7 @@ import Success from "../Components/Success";
 import { SignInMethod } from "firebase/auth";
 import Signup from "../Components/SignupForm";
 import Signin from "../Components/SigninForm";
+import Details from "../Components/Details";
 
 function AllRoutes(){
   return(
@@ -24,6 +25,9 @@ function AllRoutes(){
        <Route path="/receiveDetails" element={<Success/>}/>
        <Route path="/signin" element={<Signin />}/>
        <Route path="/signup" element={<Signup />}/>
+       <Route path="/details" component={Details} />
+
+
        {/* <Route path="/confirmation" element={<Success />}/> */}
     </Routes>
    )

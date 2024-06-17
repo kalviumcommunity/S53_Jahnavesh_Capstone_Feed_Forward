@@ -1,22 +1,16 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import formBG from "../images/df img.png";
-import logo from "../images/logo.png";
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import formBG from "../images/df img.png";
+import logo from "../images/logo.png";
 import { AppContext } from "./ParentContext";
+import axios from "axios";
 
 export default function DonateForm() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitSuccessful },
-  } = useForm();
-
+  const { register, handleSubmit, reset, formState: { errors, isSubmitSuccessful } } = useForm();
   const [imageBase64, setImageBase64] = useState("");
-  const {user} = useContext(AppContext)
+  const { user } = useContext(AppContext);
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -40,25 +34,12 @@ export default function DonateForm() {
   const formSubmitHandler = async (data) => {
     try {
       const formData = { ...data, myFile: imageBase64 };
-  
-      const docRef = doc(db, "donates", user.uid);
-      const docSnapshot = await getDoc(docRef);
-      let existingData = [];
-      if (docSnapshot.exists()) {
-        existingData = docSnapshot.data().donations || [];
-      }
-  
-      const updatedData = [...existingData, formData];
-  
-      await setDoc(docRef, { donations: updatedData });
-  
-      console.log("Data successfully added to Firestore:", updatedData);
+      await axios.post("https://s53-jahnavesh-capstone-feed-forward.onrender.com/donateForm", formData);
       reset();
     } catch (err) {
       console.log("Error submitting form:", err);
     }
   };
-  
 
   return (
     <div>
@@ -84,13 +65,10 @@ export default function DonateForm() {
             className="fillables"
             placeholder="Name of the Donor"
             {...register("Donor_Name", {
-              required:
-                "Please enter the name of the donor",
+              required: "Please enter the name of the donor",
             })}
           />
-          {errors.Donor_Name && (
-            <p className="err">{errors.Donor_Name.message}</p>
-          )}
+          {errors.Donor_Name && <p className="err">{errors.Donor_Name.message}</p>}
 
           <label>Your Email :</label>
           <input
@@ -98,13 +76,10 @@ export default function DonateForm() {
             className="fillables"
             placeholder="Email of Donor"
             {...register("Donor_Email", {
-              required:
-                "Please enter the Email of the donor",
+              required: "Please enter the Email of the donor",
             })}
           />
-          {errors.Donor_Email && (
-            <p className="err">{errors.Donor_Email.message}</p>
-          )}
+          {errors.Donor_Email && <p className="err">{errors.Donor_Email.message}</p>}
 
           <label>Feedable People :</label>
           <input
@@ -112,13 +87,10 @@ export default function DonateForm() {
             className="fillables"
             placeholder="Number of Feedable People"
             {...register("Feedable_people", {
-              required:
-                "Please enter the approximate number of people that can be fed with your food",
+              required: "Please enter the approximate number of people that can be fed with your food",
             })}
           />
-          {errors.Feedable_people && (
-            <p className="err">{errors.Feedable_people.message}</p>
-          )}
+          {errors.Feedable_people && <p className="err">{errors.Feedable_people.message}</p>}
 
           <label>Location : </label>
           <input
@@ -126,8 +98,7 @@ export default function DonateForm() {
             className="fillables"
             placeholder="Location where the food is to be collected"
             {...register("Location", {
-              required:
-                "Please enter the location where the food should be collected",
+              required: "Please enter the location where the food should be collected",
             })}
           />
           {errors.Location && <p className="err">{errors.Location.message}</p>}
@@ -152,11 +123,8 @@ export default function DonateForm() {
               required: "Please enter the types of food",
             })}
           />
-          {errors.Food_details && (
-            <p className="err">{errors.Food_details.message}</p>
-          )}
-          {/* <label>Time the food will expire at:</label>
-          <input type="time" className="fillables" /> */}
+          {errors.Food_details && <p className="err">{errors.Food_details.message}</p>}
+
           <label>Please upload the photo of the food:</label>
           <input
             type="file"
@@ -164,7 +132,7 @@ export default function DonateForm() {
             name="myFile"
             id="file-upload"
             accept=".jpeg , .png , .jpg"
-            onChange={(e) => handleFileUpload(e)}
+            onChange={handleFileUpload}
             className="image_input"
           />
 

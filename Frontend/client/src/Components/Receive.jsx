@@ -1,25 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import formBG from "../images/df img.png";
+import { AppContext } from "./ParentContext";
 
 export default function Receive() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { user } = useContext(AppContext);
 
   useEffect(() => {
     async function fetchData() {
-      setLoading(true)
+      setLoading(true);
       const url = "https://s53-jahnavesh-capstone-feed-forward.onrender.com/receive";
       try {
         const res = await axios.get(url);
         setData(res.data);
         setFilteredData(res.data);
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching Donations:", error);
+        console.error("Error fetching Donations:", error.response ? error.response.data : error.message);
+        setLoading(false);
       }
     }
 
@@ -39,15 +43,33 @@ export default function Receive() {
 
   const handleReceiveClick = async (donationId, donorEmail, donorName) => {
     try {
-      await axios.post(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiveDonation/${donationId}`, { 
-        userEmail: donorEmail, 
-        userName: donorName
+      await axios.post(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiveDetails`, {
+        donationId,
+        donorEmail,
+        donorName,
+        userEmail: user.email,
+        userName: user.displayName
       });
+
+      await axios.post(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiveDonation/${donationId}`, {
+        userEmail: user.email,
+        userName: user.displayName
+      });
+
+      navigate('/details', {
+        state: {
+          donationId,
+          donorEmail,
+          donorName,
+        }
+      });
+
+      // Delete the donation after navigating to the details page
+      await axios.delete(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/deleteDonation/${donationId}`);
     } catch (error) {
-      console.error("Error sending email to donor:", error);
+      console.error("Error handling receive click:", error.response ? error.response.data : error.message);
     }
   };
-  
 
   return (
     <div>
@@ -66,9 +88,7 @@ export default function Receive() {
           <div className="all-components">
             {filteredData.map((e, index) => (
               <div key={index} className="each-card-components">
-                <p>
-                  <h2 className="location">{e.Location.toUpperCase()}</h2>
-                </p>
+                <h2 className="location">{e.Location.toUpperCase()}</h2>
                 <p className="food_details">{e.Food_details.toUpperCase()}</p>
                 <p className="quantity">
                   QUANTITY : <span style={{ color: "#888" }}>{e.Feedable_people}</span>
