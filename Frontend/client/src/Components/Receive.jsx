@@ -56,6 +56,7 @@ export default function Receive() {
         userName: user.displayName
       });
 
+      // Navigate to the donor details page
       navigate('/details', {
         state: {
           donationId,
