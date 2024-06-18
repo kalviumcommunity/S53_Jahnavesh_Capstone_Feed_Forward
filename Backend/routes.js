@@ -10,7 +10,7 @@ router.get("/receive", async (req, res) => {
     console.log("Donations", food);
     res.json(food);
   } catch (error) {
-    console.error("Error fetching donations:", error);
+    console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
@@ -24,21 +24,29 @@ router.post("/donateForm", async (req, res) => {
     console.log(data);
     res.send({ message: true, donate: donate });
   } catch (error) {
-    console.log("Error saving donation:", error);
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 });
 
 router.post("/receiveDetails", async (req, res) => {
-  const data = req.body;
-  console.log(data);
-  const receiver = new receiveSchema(data);
+  const { donationId, donorEmail, donorName, userEmail, userName } = req.body;
+  console.log(req.body);
+  
+  // Only save the necessary fields
+  const receiver = new receiveSchema({
+    donationId,
+    donorEmail,
+    donorName,
+    userEmail,
+    userName,
+    status: "Pending"
+  });
   try {
     await receiver.save();
-    console.log(data);
-    res.send({ message: true, receiver: receiver });
+    res.send({ message: true, receiver });
   } catch (error) {
-    console.log("Error saving receiver details:", error);
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -47,11 +55,12 @@ router.get("/receiver", async (req, res) => {
   try {
     const receiverDet = await receiveSchema.find();
     console.log(receiverDet);
-    res.json(receiverDet);
+    res.json(receiverDet)
   } catch (error) {
-    console.log("Error fetching receiver details:", error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
+
 });
 
 router.post("/receiveDonation/:donationId", async (req, res) => {
@@ -84,6 +93,24 @@ router.post("/receiveDonation/:donationId", async (req, res) => {
   }
 });
 
+router.post("/processDonationRequest/:donationId/accept", async (req, res) => {
+  const { donationId } = req.params;
+
+  try {
+    const donationRequest = await receiveSchema.findById(donationId);
+    if (!donationRequest) {
+      return res.status(404).json({ error: "Donation request not found" });
+    }
+
+    await receiveSchema.findByIdAndUpdate(donationId, { status: "Accepted" });
+
+    return res.status(200).json({ message: "Donation request accepted successfully" });
+  } catch (error) {
+    console.error("Error accepting donation request:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.delete("/deleteDonation/:donationId", async (req, res) => {
   const { donationId } = req.params;
 
@@ -92,6 +119,16 @@ router.delete("/deleteDonation/:donationId", async (req, res) => {
     res.status(200).json({ message: "Donation deleted successfully" });
   } catch (error) {
     console.error("Error deleting donation:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.get("/receivedDonations", async (req, res) => {
+  try {
+    const receivedDonations = await receiveSchema.find({ status: "Pending" });
+    res.json(receivedDonations);
+  } catch (error) {
+    console.error("Error fetching received donations:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
