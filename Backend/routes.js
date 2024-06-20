@@ -51,6 +51,24 @@ router.post("/receiveDetails", async (req, res) => {
   }
 });
 
+router.get("/donorDetails/:id", async (req, res) => {
+  const id = req.params.id; 
+  try {
+    const donorDetails = await donateSchema.findById(id);
+    if(!donorDetails){
+      res.send({message:"no donor found"})
+    }
+    else{
+
+      res.send(donorDetails);
+    }
+  } catch (error) {
+    console.error("Error fetching donor donations:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
 router.get("/receiver", async (req, res) => {
   try {
     const receiverDet = await receiveSchema.find();

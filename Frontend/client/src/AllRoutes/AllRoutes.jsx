@@ -12,6 +12,7 @@ import { SignInMethod } from "firebase/auth";
 import Signup from "../Components/SignupForm";
 import Signin from "../Components/SigninForm";
 import Details from "../Components/Details";
+import DonorDetails from "../Components/Details";
 
 function AllRoutes(){
   return(
@@ -25,7 +26,8 @@ function AllRoutes(){
        <Route path="/receiveDetails" element={<Success/>}/>
        <Route path="/signin" element={<Signin />}/>
        <Route path="/signup" element={<Signup />}/>
-       <Route path="/details" component={Details} />
+       <Route path="/details" element={<DonorDetails/>} />
+       {/* <Route path="/details" element={<} */}
 
 
        {/* <Route path="/confirmation" element={<Success />}/> */}
@@ -34,3 +36,13 @@ function AllRoutes(){
 }
 
 export default AllRoutes
+
+
+
+
+
+
+
+
+
+allroutes.jsx
