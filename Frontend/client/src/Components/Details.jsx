@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const DonorDetails = () => {
-  const { donationId } = useParams();
-  const [donorDetails, setDonorDetails] = useState(null);
-
+  // const { donationId } = useParams();
+  const [donorDetails, setDonorDetails] = useState([]);
+  const donationId= Cookies.get('donorId');
+  const conformDonation=async()=>{
+    try {
+      const response = await axios.delete(`http://localhost:4000/deleteDonation/${donationId}`)
+    } catch (error) {
+      alert("error")
+    }
+  }
+  console.log(donationId)
   useEffect(() => {
     const fetchDonorDetails = async () => {
       try {
-        const response = await axios.get(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/donorDetails/${donationId}`);
+        const response = await axios.get(`http://localhost:4000/donorDetails/${donationId}`);
+        console.log(response.data);
         setDonorDetails(response.data);
       } catch (error) {
-        console.error('Error fetching donor details:', error);
+        console.log('Error fetching donor details:', error);
       }
     };
 
@@ -28,8 +37,9 @@ const DonorDetails = () => {
       <h1>Donor Details</h1>
       <p>Name: {donorDetails.Donor_Name}</p>
       <p>Email: {donorDetails.Donor_Email}</p>
-      <p>Location: {donorDetails.Donor_Location}</p>
-      <p>Phone: {donorDetails.Donor_Phone}</p>
+      <p>Location: {donorDetails.Location}</p>
+      <p>Phone: {donorDetails.Contact}</p>
+      <button onClick={()=>{conformDonation()}}>Conform Donation</button>
     </div>
   );
 };
