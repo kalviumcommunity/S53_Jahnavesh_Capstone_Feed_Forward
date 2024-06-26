@@ -36,13 +36,3 @@ function AllRoutes(){
 }
 
 export default AllRoutes
-
-
-
-
-
-
-
-
-
-allroutes.jsx
