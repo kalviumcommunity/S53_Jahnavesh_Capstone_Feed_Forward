@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import backgroundimg from "../images/BG-1.png"
 
 const DonorDetails = () => {
   // const { donationId } = useParams();
@@ -8,7 +9,7 @@ const DonorDetails = () => {
   const donationId= Cookies.get('donorId');
   const conformDonation=async()=>{
     try {
-      const response = await axios.delete(`http://localhost:4000/deleteDonation/${donationId}`)
+      const response = await axios.delete(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/deleteDonation/${donationId}`)
     } catch (error) {
       alert("error")
     }
@@ -17,7 +18,7 @@ const DonorDetails = () => {
   useEffect(() => {
     const fetchDonorDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/donorDetails/${donationId}`);
+        const response = await axios.get(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/donorDetails/${donationId}`);
         console.log(response.data);
         setDonorDetails(response.data);
       } catch (error) {
@@ -34,12 +35,14 @@ const DonorDetails = () => {
 
   return (
     <div>
-      <h1>Donor Details</h1>
-      <p>Name: {donorDetails.Donor_Name}</p>
-      <p>Email: {donorDetails.Donor_Email}</p>
-      <p>Location: {donorDetails.Location}</p>
-      <p>Phone: {donorDetails.Contact}</p>
-      <button onClick={()=>{conformDonation()}}>Conform Donation</button>
+      <img src={backgroundimg} alt="" className='donordetailsimg'/>
+      <div className='detailsbox'>
+        <h1 style={{marginLeft:"18%"}}>Donor Details</h1>
+        <p style={{padding:"12px"}}>Name: {donorDetails.Donor_Name}</p>
+        <p style={{padding:"12px"}}>Email: {donorDetails.Donor_Email}</p>
+        <p style={{padding:"12px"}}>Location: {donorDetails.Location}</p>
+        <p style={{padding:"12px"}}>Phone: {donorDetails.Contact}</p>
+      </div>
     </div>
   );
 };

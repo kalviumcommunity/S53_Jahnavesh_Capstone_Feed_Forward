@@ -19,7 +19,7 @@ export default function DonateForm() {
       fileReader.onload = () => {
         resolve(fileReader.result);
       };
-      fileReader.onerror = (error) => {
+      fileReader.onerror = (error) => { 
         reject(error);
       };
     });
