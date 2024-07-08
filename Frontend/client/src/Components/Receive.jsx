@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import formBG from "../images/df img.png";
 import { AppContext } from "./ParentContext";
 import Cookies from 'js-cookie';
+
 export default function Receive() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
