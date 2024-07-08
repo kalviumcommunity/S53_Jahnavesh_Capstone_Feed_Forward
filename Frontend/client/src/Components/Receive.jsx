@@ -10,13 +10,10 @@ export default function Receive() {
   const [filteredData, setFilteredData] = useState([]);
   const [filter, setFilter] = useState("");
   const [loading, setLoading] = useState(false);
+  const [receivedDonations, setReceivedDonations] = useState([]);
   const navigate = useNavigate();
   const { user } = useContext(AppContext);
-  // const handleSetDonorId = (id) => {
-  //   // Set the cookie with the donor ID and expiration of 7 days
-  //   setDonorId(id);
-  //   console.log('Donor ID cookie set:', id);
-  // };
+
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
@@ -42,11 +39,23 @@ export default function Receive() {
     setFilteredData(filtered);
   }, [data, filter]);
 
+  useEffect(() => {
+    const updatedFilteredData = data.filter(
+      (item) => !receivedDonations.includes(item._id)
+    );
+    setFilteredData(updatedFilteredData);
+  }, [receivedDonations, data]);
+
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
   };
 
   const handleReceiveClick = async (donationId, donorEmail, donorName) => {
+    // Show an initial alert to confirm the action
+    const isConfirmed = window.confirm("Are you sure you want to receive this donation?");
+    
+    if (!isConfirmed) return;
+
     try {
       await axios.post(`https://s53-jahnavesh-capstone-feed-forward.onrender.com/receiveDetails`, {
         donationId,
@@ -60,45 +69,54 @@ export default function Receive() {
         userEmail: user.email,
         userName: user.displayName
       });
+      
       Cookies.set('donorId', donationId, { expires: 7 });
+      
+      // Show a second alert to confirm the final action
+      const isFinalConfirmed = window.confirm("Are you sure you want to proceed to the details page?");
+      
+      if (!isFinalConfirmed) return;
+      
       // Navigate to the donor details page
       navigate('/details');
 
-      // Delete the donation after navigating to the details page
-    }
-    catch (error) {
+      // Set a timeout to remove the donation after 2 minutes
+      setTimeout(() => {
+        setReceivedDonations((prev) => [...prev, donationId]);
+      }, 2 * 60 * 1000);
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-    return (
-      <div>
-        <img src={formBG} alt="" id="receivebg" />
-        <input
-          type="text"
-          className="receive-filter"
-          placeholder="Filter by Location"
-          value={filter}
-          onChange={handleFilterChange}
-        />
-        <div className="receive-page">
-          {loading ? (
-            <span className="loading loading-bars loading-lg"></span>
-          ) : (
-            <div className="all-components">
-              {filteredData.map((e, index) => (
-                <div key={index} className="each-card-components">
-                  <h2 className="location">{e.Location.toUpperCase()}</h2>
-                  <p className="food_details">{e.Food_details.toUpperCase()}</p>
-                  <p className="quantity">
-                    QUANTITY : <span style={{ color: "#888" }}>{e.Feedable_people}</span>
-                  </p>
-                  <button className="receive-btn" onClick={() => handleReceiveClick(e._id, e.Donor_Email, e.Donor_Name)}>RECEIVE</button>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+  return (
+    <div>
+      <img src={formBG} alt="" id="receivebg" />
+      <input
+        type="text"
+        className="receive-filter"
+        placeholder="Filter by Location"
+        value={filter}
+        onChange={handleFilterChange}
+      />
+      <div className="receive-page">
+        {loading ? (
+          <span className="loading loading-bars loading-lg"></span>
+        ) : (
+          <div className="all-components">
+            {filteredData.map((e, index) => (
+              <div key={index} className="each-card-components">
+                <h2 className="location">{e.Location.toUpperCase()}</h2>
+                <p className="food_details">{e.Food_details.toUpperCase()}</p>
+                <p className="quantity">
+                  QUANTITY : <span style={{ color: "#888" }}>{e.Feedable_people}</span>
+                </p>
+                <button className="receive-btn" onClick={() => handleReceiveClick(e._id, e.Donor_Email, e.Donor_Name)}>RECEIVE</button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
+}
