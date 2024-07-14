@@ -2,10 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./db");
 const router = require("./routes");
-const bodyParser = require("body-parser");
-const cron = require('node-cron');
-const { donateSchema } = require('./Schema');
-const { DateTime } = require("luxon");
 const mongoose = require('mongoose');
 
 const app = express();
